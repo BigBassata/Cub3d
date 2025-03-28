@@ -1,0 +1,29 @@
+
+
+
+    NO    wall_textures/path.png     
+
+    SO    wall_textures/path.png 
+
+
+    EA    wall_textures/path.png 
+
+
+    WE    wall_textures/path.png 
+
+    C     0,0,0
+
+
+
+    F     120,120,120
+
+
+        1
+       101
+      10001
+     1000001
+    100010001
+     100S001
+      10001
+       101
+        1
