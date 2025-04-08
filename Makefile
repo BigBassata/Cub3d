@@ -21,11 +21,11 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 
 
-SRCS = main.c error.c \
+SRCS = main.c \
 	./parsing/file_validation.c ./parsing/map_config_utils.c ./parsing/test_map_utils.c ./parsing/file_parsing_1.c \
 	./parsing/file_parsing_2.c ./parsing/map_config_elements_paths.c ./parsing/map_config_validation.c \
-	./parsing/game_map_utils_1.c ./parsing/game_map_utils_2.c ./parsing/game_map_utils_3.c ./parsing/map_config_colors_1.c ./parsing/map_config_colors_2.c
-
+	./parsing/game_map_utils_1.c ./parsing/game_map_utils_2.c ./parsing/game_map_utils_3.c ./parsing/map_config_colors_1.c ./parsing/map_config_colors_2.c \
+	./parsing/parse_map.c ./utils/utils.c ./utils/colors_utils.c ./cleanup/ft_cleanup.c
 OBJS = $(SRCS:.c=.o)
 
 

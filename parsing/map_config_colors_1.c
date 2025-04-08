@@ -64,7 +64,7 @@ int	config_f_color(char *line, t_map_config *map_config)
 	return (check_colors_values(map_config->f_color));
 }
 
-int	config_c_color(char *line, t_map_config *map_config)
+int	 config_c_color(char *line, t_map_config *map_config)
 {
 	int		i;
 	int		c_index;

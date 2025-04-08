@@ -10,7 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
+
+
+double	get_time(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((double)tv.tv_sec + (double)tv.tv_usec / 1000000.0);
+}
 
 void	print_error(char *error)
 {
@@ -28,4 +37,31 @@ void	print_error_arg(char *error, char *arg)
 	if (arg)
 		ft_putstr_fd(error, 2);
 	ft_putendl_fd("", 2);
+}
+
+void	free_2d_array(char **array, int height)
+{
+	int	i;
+
+	if (!array)
+		return ;
+	i = 0;
+	if (height == -1)
+	{
+		while (array[i])
+			free(array[i++]);
+	}
+	else
+	{
+		while (i < height)
+		{
+			if (array[i])
+			{
+				free(array[i]);
+				array[i] = NULL;
+			}
+			i++;
+		}
+	}
+	free(array);
 }
