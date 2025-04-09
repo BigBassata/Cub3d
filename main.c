@@ -89,11 +89,11 @@ int main(int argc, char **argv)
         cleanup_game(game);
         return (1);
     }
-    // if (!init_window(game))
-    // {
-    //     cleanup_game(game);
-    //     return (print_error("Window initialization failed"), 1);
-    // }
+    if (!init_window(game))
+    {
+        cleanup_game(game);
+        return (print_error("Window initialization failed"), 1);
+    }
     cleanup_game(game);
     return (0);
 }

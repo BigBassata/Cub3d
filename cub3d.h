@@ -39,6 +39,12 @@
 # define MOUSE_CAPTURE_KEY 109
 # define MOUSE_DEADZONE 2
 
+/* Window */
+# define WINDOW_WIDTH 1280
+# define WINDOW_HEIGHT 720
+# define EXTENSION_NAME ".cub"
+# define WINDOW_NAME "cub3D"
+
 
 enum e_state
 {
