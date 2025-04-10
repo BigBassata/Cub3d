@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 static void	cpy_color(int *colors, int *color_index, char *color_str,
 	int *str_index)

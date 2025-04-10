@@ -6,11 +6,11 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:52:32 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/08 15:56:07 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/10 16:10:26 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 static int copy_map_grid(t_map_data *map_data, t_map_config *map_config)
 {

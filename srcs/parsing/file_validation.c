@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_parsing_2.c                                   :+:      :+:    :+:   */
+/*   file_validation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julombar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
-int	only_spaces_in_line(char *line)
+int	is_cub_file(char *file)
 {
-	while (line && *line)
-	{
-		if (*line != ' ')
-			return (FALSE);
-		line++;
-	}
+	int	len;
+
+	len = ft_strlen(file);
+	if (len < 5)
+		return (FALSE);
+	if (file[len - 5] == '/' || ft_strncmp(&file[len - 4], ".cub", 4) != 0)
+		return (FALSE);
 	return (TRUE);
 }

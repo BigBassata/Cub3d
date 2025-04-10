@@ -1,0 +1,22 @@
+    NO    wall_textures/path.png     
+
+    SO    wall_textures/path.png 
+
+
+    EA    wall_textures/path.png 
+
+
+    WE    wall_textures/path.png 
+
+    C     0,0,0
+
+
+
+    F     120,120,120
+
+
+11111111111111111111111
+110000000000000010111111111
+100000000000000N11111
+110000000000000000011
+1111111111111111  111

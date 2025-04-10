@@ -6,12 +6,12 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:47:45 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/08 15:16:29 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/10 16:12:03 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 static void free_texture(t_texture *texture, void *mlx)
 {

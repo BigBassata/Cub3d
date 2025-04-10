@@ -6,11 +6,11 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:10:54 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/08 16:11:08 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/10 16:11:23 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 int create_trgb(int t, int r, int g, int b)
 {

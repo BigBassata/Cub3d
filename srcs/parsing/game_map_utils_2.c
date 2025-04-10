@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 int	recursively_check_adjacent_walls(char **map, int y, int x,
 	int size[2])
