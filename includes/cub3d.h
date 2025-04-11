@@ -18,8 +18,7 @@
 # include "parsing_cub.h"
 # include "struct_cub.h"
 # include "test.h"
-# include "unity.h"
-# include <fcntl.h>
+# include "../Unity/src/unity.h"
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -65,6 +64,8 @@ void            cleanup_graphics(t_game *game);
 int 			check_args(char *mapfile, int argc);
 t_map_data      *init_map(void);
 int             init_window(t_game *game);
+t_game          *init_game(void);
+
 
 
 #endif

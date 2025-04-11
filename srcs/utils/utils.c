@@ -65,3 +65,14 @@ void	free_2d_array(char **array, int height)
 	}
 	free(array);
 }
+
+int check_args(char *mapfile, int argc)
+{
+    if (argc < 2)
+        return (print_error("usage: ./cub3d <map_name>.cub"), ERROR);
+    if (argc > 2)
+        return (print_error("too many arguments\nusage: ./cub3d <map_name>.cub"), ERROR);
+    if (is_cub_file(mapfile) != TRUE)
+        return (print_error("bad file extension\nusage: ./cub3d <map_name>.cub"), ERROR);
+    return (TRUE);
+}
