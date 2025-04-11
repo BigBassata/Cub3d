@@ -17,6 +17,8 @@
 # include "../minilibx-linux/mlx.h"
 # include "parsing_cub.h"
 # include "struct_cub.h"
+# include "test.h"
+# include "unity.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
