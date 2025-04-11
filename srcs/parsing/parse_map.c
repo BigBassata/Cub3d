@@ -6,7 +6,7 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:52:32 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/10 16:10:26 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/11 19:26:21 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,16 @@ static void setup_player(t_map_data *map_data, t_map_config *map_config)
     map_data->player_start_x = map_config->start_x;
     map_data->player_start_y = map_config->start_y;
 }
+static void ft_display_str_array(char **arr)
+{
+    int i = 0;
+
+    while (arr[i])
+    {
+        ft_putendl_fd(arr[i], 1);
+        i++;
+    }
+}
 
 int parse_map(char *mapfile, t_map_data *map_data)
 {
@@ -82,14 +92,26 @@ int parse_map(char *mapfile, t_map_data *map_data)
         delete_map_config(map_config);
         return (FALSE);
     }
+    ft_display_str_array(map_data->grid);
+    printf("width: %d, height: %d\n", map_data->width, map_data->height);
     if (!copy_texture_paths(map_data, map_config))
     {
         free_2d_array(map_data->grid, map_data->height);
         delete_map_config(map_config);
         return (FALSE);
     }
+    printf("North texture path: %s\n", map_data->north.path);
+    printf("South texture path: %s\n", map_data->south.path);
+    printf("East texture path: %s\n", map_data->east.path);
+    printf("West texture path: %s\n", map_data->west.path);
+
     setup_colors(map_data, map_config);
     setup_player(map_data, map_config);
+    printf("Ceiling color: %d, %d, %d\n", map_data->ceiling.r,
+        map_data->ceiling.g, map_data->ceiling.b);
+    printf("Floor color: %d, %d, %d\n", map_data->floor.r,
+        map_data->floor.g, map_data->floor.b);
+    printf("Player start position: (%f, %f)\n", map_data->player_start_x, map_data->player_start_y);
     map_data->map_config = map_config;
     return (TRUE);
 }
