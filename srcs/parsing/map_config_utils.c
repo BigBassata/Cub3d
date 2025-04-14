@@ -45,15 +45,16 @@ t_map_config	*init_map_config(void)
 
 void	free_map(char **map)
 {
-	char	**tmp;
+	// char	**tmp;
 
-	if (map)
-	{
-		tmp = map;
-		while (*tmp)
-			free(*tmp++);
-		free(map);
-	}
+	// if (map)
+	// {
+	// 	tmp = map;
+	// 	while (*tmp)
+	// 		free(*tmp++);
+	// 	free(map);
+	// }
+	free_2d_array(map, -1);
 }
 
 void	delete_map_config(t_map_config *map_config)
