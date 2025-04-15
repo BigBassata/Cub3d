@@ -73,30 +73,6 @@ int	dispatch_line(char *line, t_map_config *map_config)
 	return (TRUE);
 }
 
-// int	config_map(int fd, t_map_config *map_config)
-// {
-// 	char	*line;
-// 
-// 	line = get_next_line(fd);
-// 	while (line)
-// 	{
-// 		if ((line[0] == '\r' && line[1] == '\n') || line[0] == '\n' || line[0] == '\0')
-// 		{
-// 			free(line);
-// 			line = get_next_line(fd);
-// 			continue ;
-// 		}
-// 		line = ft_strtrim(line, "\r\n");
-// 		if (!line)
-// 			return (print_error("ft_strtrim in config_map failed"), ERROR);
-// 		if (dispatch_line(line, map_config) == ERROR)
-// 			return (free(line), ERROR);
-// 		free(line);
-// 		line = get_next_line(fd);
-// 	}
-// 	return (TRUE);
-// }
-
 int	config_map(int fd, t_map_config *map_config)
 {
 	char	*line;

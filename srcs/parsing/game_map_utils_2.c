@@ -20,21 +20,21 @@ int	recursively_check_adjacent_walls(char **map, int y, int x,
 	if (map[y][x] == '1' || map[y][x] == 'v')
 		return (TRUE);
 	map[y][x] = 'v';
-	if (recursively_check_walls(map, y - 1, x, size) != TRUE)
+	if (recursively_check_adjacent_walls(map, y - 1, x, size) != TRUE)
 		return (ERROR);
-	if (recursively_check_walls(map, y - 1, x - 1, size) != TRUE)
+	if (recursively_check_adjacent_walls(map, y - 1, x - 1, size) != TRUE)
 		return (ERROR);
-	if (recursively_check_walls(map, y - 1, x + 1, size) != TRUE)
+	if (recursively_check_adjacent_walls(map, y - 1, x + 1, size) != TRUE)
 		return (ERROR);
-	if (recursively_check_walls(map, y, x - 1, size) != TRUE)
+	if (recursively_check_adjacent_walls(map, y, x - 1, size) != TRUE)
 		return (ERROR);
-	if (recursively_check_walls(map, y, x + 1, size) != TRUE)
+	if (recursively_check_adjacent_walls(map, y, x + 1, size) != TRUE)
 		return (ERROR);
-	if (recursively_check_walls(map, y + 1, x, size) != TRUE)
+	if (recursively_check_adjacent_walls(map, y + 1, x, size) != TRUE)
 		return (ERROR);
-	if (recursively_check_walls(map, y + 1, x - 1, size) != TRUE)
+	if (recursively_check_adjacent_walls(map, y + 1, x - 1, size) != TRUE)
 		return (ERROR);
-	if (recursively_check_walls(map, y + 1, x + 1, size) != TRUE)
+	if (recursively_check_adjacent_walls(map, y + 1, x + 1, size) != TRUE)
 		return (ERROR);
 	return (TRUE);
 }
