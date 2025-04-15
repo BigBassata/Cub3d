@@ -81,47 +81,47 @@
 // 	return (0);
 // }
 
-void	moove_player_up(t_game *game)
-{
-	double moveSpeed = 0.05;
-	double rotSpeed  = 0.03;
-	char	**map;
+// void	moove_player_up(t_game *game)
+// {
+// 	double moveSpeed = 0.05;
+// 	double rotSpeed  = 0.03;
+// 	char	**map;
 
-	map = game->map;
-	if (map)
-	{
-		// Fausse variable dir_x et dir_y
-		if (map[(int)(game->map_data->player_y)]
-			[(int)(game->map_data->player_x + game->map_data->dir_x * moveSpeed)] == 0)
-			data->player.posX += data->player.dirX * moveSpeed;
+// 	map = game->map;
+// 	if (map)
+// 	{
+// 		// Fausse variable dir_x et dir_y
+// 		if (map[(int)(game->map_data->player_y)]
+// 			[(int)(game->map_data->player_x + game->map_data->dir_x * moveSpeed)] == 0)
+// 			data->player.posX += data->player.dirX * moveSpeed;
 
-		if (map[(int)(game->map_data->player_y + game->map_data->dir_y * moveSpeed)]
-					[(int)(game->map_data->player_x)] == 0)
-			data->player.posY += data->player.dirY * moveSpeed;		
-	}
-}
+// 		if (map[(int)(game->map_data->player_y + game->map_data->dir_y * moveSpeed)]
+// 					[(int)(game->map_data->player_x)] == 0)
+// 			data->player.posY += data->player.dirY * moveSpeed;		
+// 	}
+// }
 
-int	handle_keypress(int keycode, t_game *game)
-{
-	double moveSpeed = 0.05;
-	double rotSpeed  = 0.03;
+// int	handle_keypress(int keycode, t_game *game)
+// {
+// 	double moveSpeed = 0.05;
+// 	double rotSpeed  = 0.03;
 
-	if (keycode == ESCAPE)
-	{
-		cleanup_game(game);
-		exit(0);
-	}
-	else if (keycode == UP)
-		moove_player_up(game);
-	else if (keycode == UP)
-	{
-		if (worldMap[(int)(data->player.posY)]
-					[(int)(data->player.posX + data->player.dirX * moveSpeed)] == 0)
-			data->player.posX += data->player.dirX * moveSpeed;
-		if (worldMap[(int)(data->player.posY + data->player.dirY * moveSpeed)]
-					[(int)(data->player.posX)] == 0)
-			data->player.posY += data->player.dirY * moveSpeed;
-	}
+// 	if (keycode == ESCAPE)
+// 	{
+// 		cleanup_game(game);
+// 		exit(0);
+// 	}
+// 	else if (keycode == UP)
+// 		moove_player_up(game);
+// 	else if (keycode == UP)
+// 	{
+// 		if (worldMap[(int)(data->player.posY)]
+// 					[(int)(data->player.posX + data->player.dirX * moveSpeed)] == 0)
+// 			data->player.posX += data->player.dirX * moveSpeed;
+// 		if (worldMap[(int)(data->player.posY + data->player.dirY * moveSpeed)]
+// 					[(int)(data->player.posX)] == 0)
+// 			data->player.posY += data->player.dirY * moveSpeed;
+// 	}
 	// else if (keycode == DOWN)
 	// {
 	// 	if (worldMap[(int)(data->player.posY)]
@@ -169,8 +169,8 @@ int	handle_keypress(int keycode, t_game *game)
 	// 				[(int)(data->player.posX)] == 0)
 	// 		data->player.posY -= data->player.dirX * moveSpeed;
 	// }
-	return (0);
-}
+// 	return (0);
+// }
 
 int	close_window(t_game *game)
 {
