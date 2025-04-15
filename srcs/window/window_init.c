@@ -38,5 +38,5 @@ int init_window(t_game *game)
         mlx_destroy_window(game->renderer.mlx, game->renderer.win);
         return (print_error("Failed to create image"), ERROR);
     }
-       
+    return (TRUE);
 }
