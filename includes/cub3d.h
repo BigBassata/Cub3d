@@ -36,6 +36,8 @@
 # define DOWN 115
 # define LEFT 97
 # define RIGHT 100
+# define ROTATION_LEFT 65363
+# define ROTATION_RIGHT 65361
 
 /* Mouse Settings */
 # define MOUSE_SENSITIVITY 0.0003
