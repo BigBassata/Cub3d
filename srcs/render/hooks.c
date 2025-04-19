@@ -207,6 +207,8 @@ int	update_loop(t_game *game)
 	int		hit;
 	int		side; // 0 : vertical wall, 1 : horizontal wall
 
+	double	perp_wall_dist;
+
 	x = 0;
 	while (x < game->renderer.win_width)
 	{
@@ -262,6 +264,11 @@ int	update_loop(t_game *game)
 		if (game->map[map_y][map_x] > 0)
 			hit = 1;
 	}
+	// Handle Fisheye effect
+	if (side == 0)
+		perp_wall_dist = (map_x - game->player.pos_x + (1 - step_x) / 2.0) / ray_dir_x;
+	else
+		perp_wall_dist = (map_y - game->player.pos_y + (1 - step_y) / 2.0) / ray_dir_y;
 	mlx_put_image_to_window(game->renderer.mlx, game->renderer.win,
 		game->renderer.frame.img, 0, 0);
 	return (0);
