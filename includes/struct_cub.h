@@ -54,7 +54,7 @@ typedef struct s_color
 typedef struct s_img
 {
     void *img;
-    int *addr;
+    char *addr;
     int bits_per_pixel;
     int line_length;
     int endian;

@@ -23,15 +23,15 @@ int main(int argc, char **argv)
 	if (!game)
 		return (print_error("Memory allocation failed"), 1);
 	if (parse_map(argv[1], game->map_data) != TRUE)
-	{
-		cleanup_game(game);
-		return (1);
-	}
+		return (cleanup_game(game), 1);
 	if (!init_window(game))
 	{
 		cleanup_game(game);
 		return (print_error("Window initialization failed"), 1);
 	}
+	mlx_put_image_to_window(game->renderer.mlx, game->renderer.win,
+		game->renderer.frame.img, 0, 0);
+	mlx_loop(game->renderer.mlx);
 	cleanup_game(game);
 	return (0);
 }

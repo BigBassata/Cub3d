@@ -14,104 +14,104 @@
 
 static int copy_map_grid(t_map_data *map_data, t_map_config *map_config)
 {
-    int i;
+	int i;
 
-    map_data->grid = malloc(sizeof(char *) * (map_data->height + 1));
-    if (!map_data->grid)
-        return (print_error("Memory allocation failed"), FALSE);
-    i = 0;
-    while (i < map_data->height)
-    {
-        map_data->grid[i] = ft_strdup(map_config->map[i]);
-        if (!map_data->grid[i])
-        {
-            free_2d_array(map_data->grid, i);
-            return (print_error("Memory allocation failed"), FALSE);
-        }
-        i++;
-    }
-    map_data->grid[map_data->height] = NULL;
-    return (TRUE);
+	map_data->grid = malloc(sizeof(char *) * (map_data->height + 1));
+	if (!map_data->grid)
+		return (print_error("Memory allocation failed"), FALSE);
+	i = 0;
+	while (i < map_data->height)
+	{
+		map_data->grid[i] = ft_strdup(map_config->map[i]);
+		if (!map_data->grid[i])
+		{
+			free_2d_array(map_data->grid, i);
+			return (print_error("Memory allocation failed"), FALSE);
+		}
+		i++;
+	}
+	map_data->grid[map_data->height] = NULL;
+	return (TRUE);
 }
 
 static int copy_texture_paths(t_map_data *map_data, t_map_config *map_config)
 {
-    map_data->north.path = ft_strdup(map_config->no_path);
-    map_data->south.path = ft_strdup(map_config->so_path);
-    map_data->east.path = ft_strdup(map_config->ea_path);
-    map_data->west.path = ft_strdup(map_config->we_path);
-    
-    if (!map_data->north.path || !map_data->south.path ||
-        !map_data->east.path || !map_data->west.path)
-        return (print_error("Failed to copy texture paths"), FALSE);
-    return (TRUE);
+	map_data->north.path = ft_strdup(map_config->no_path);
+	map_data->south.path = ft_strdup(map_config->so_path);
+	map_data->east.path = ft_strdup(map_config->ea_path);
+	map_data->west.path = ft_strdup(map_config->we_path);
+	
+	if (!map_data->north.path || !map_data->south.path ||
+		!map_data->east.path || !map_data->west.path)
+		return (print_error("Failed to copy texture paths"), FALSE);
+	return (TRUE);
 }
 
 static void setup_colors(t_map_data *map_data, t_map_config *map_config)
 {
-    map_data->floor.r = map_config->f_color[0];
-    map_data->floor.g = map_config->f_color[1];
-    map_data->floor.b = map_config->f_color[2];
-    map_data->floor.value = create_trgb(0, map_data->floor.r,
-                                         map_data->floor.g, map_data->floor.b);
-    map_data->ceiling.r = map_config->c_color[0];
-    map_data->ceiling.g = map_config->c_color[1];
-    map_data->ceiling.b = map_config->c_color[2];
-    map_data->ceiling.value = create_trgb(0, map_data->ceiling.r,
-                                          map_data->ceiling.g, map_data->ceiling.b);
+	map_data->floor.r = map_config->f_color[0];
+	map_data->floor.g = map_config->f_color[1];
+	map_data->floor.b = map_config->f_color[2];
+	map_data->floor.value = create_trgb(0, map_data->floor.r,
+										map_data->floor.g, map_data->floor.b);
+	map_data->ceiling.r = map_config->c_color[0];
+	map_data->ceiling.g = map_config->c_color[1];
+	map_data->ceiling.b = map_config->c_color[2];
+	map_data->ceiling.value = create_trgb(0, map_data->ceiling.r,
+										map_data->ceiling.g, map_data->ceiling.b);
 }
 
 static void setup_player(t_map_data *map_data, t_map_config *map_config)
 {
-    map_data->player_start_dir = map_config->start_dir;
-    map_data->player_start_x = map_config->start_x;
-    map_data->player_start_y = map_config->start_y;
+	map_data->player_start_dir = map_config->start_dir;
+	map_data->player_start_x = map_config->start_x;
+	map_data->player_start_y = map_config->start_y;
 }
 static void ft_display_str_array(char **arr)
 {
-    int i = 0;
+	int i = 0;
 
-    while (arr[i])
-    {
-        ft_putendl_fd(arr[i], 1);
-        i++;
-    }
+	while (arr[i])
+	{
+		ft_putendl_fd(arr[i], 1);
+		i++;
+	}
 }
 
 int parse_map(char *mapfile, t_map_data *map_data)
 {
-    t_map_config *map_config;
+	t_map_config *map_config;
 
-    map_config = file_parsing(mapfile);
-    if (!map_config)
-        return (print_error("Failed to parse map file"), FALSE);
-    map_data->width = map_config->map_width;
-    map_data->height = map_config->map_height;
-    if (!copy_map_grid(map_data, map_config))
-    {
-        delete_map_config(map_config);
-        return (FALSE);
-    }
-    ft_display_str_array(map_data->grid);
-    printf("width: %d, height: %d\n", map_data->width, map_data->height);
-    if (!copy_texture_paths(map_data, map_config))
-    {
-        free_2d_array(map_data->grid, map_data->height);
-        delete_map_config(map_config);
-        return (FALSE);
-    }
-    printf("North texture path: %s\n", map_data->north.path);
-    printf("South texture path: %s\n", map_data->south.path);
-    printf("East texture path: %s\n", map_data->east.path);
-    printf("West texture path: %s\n", map_data->west.path);
+	map_config = file_parsing(mapfile);
+	if (!map_config)
+		return (print_error("Failed to parse map file"), FALSE);
+	map_data->width = map_config->map_width;
+	map_data->height = map_config->map_height;
+	if (!copy_map_grid(map_data, map_config))
+	{
+		delete_map_config(map_config);
+		return (FALSE);
+	}
+	ft_display_str_array(map_data->grid);
+	printf("width: %d, height: %d\n", map_data->width, map_data->height);
+	if (!copy_texture_paths(map_data, map_config))
+	{
+		free_2d_array(map_data->grid, map_data->height);
+		delete_map_config(map_config);
+		return (FALSE);
+	}
+	printf("North texture path: %s\n", map_data->north.path);
+	printf("South texture path: %s\n", map_data->south.path);
+	printf("East texture path: %s\n", map_data->east.path);
+	printf("West texture path: %s\n", map_data->west.path);
 
-    setup_colors(map_data, map_config);
-    setup_player(map_data, map_config);
-    printf("Ceiling color: %d, %d, %d\n", map_data->ceiling.r,
-        map_data->ceiling.g, map_data->ceiling.b);
-    printf("Floor color: %d, %d, %d\n", map_data->floor.r,
-        map_data->floor.g, map_data->floor.b);
-    printf("Player start position: (%f, %f)\n", map_data->player_start_x, map_data->player_start_y);
-    map_data->map_config = map_config;
-    return (TRUE);
+	setup_colors(map_data, map_config);
+	setup_player(map_data, map_config);
+	printf("Ceiling color: %d, %d, %d\n", map_data->ceiling.r,
+		map_data->ceiling.g, map_data->ceiling.b);
+	printf("Floor color: %d, %d, %d\n", map_data->floor.r,
+		map_data->floor.g, map_data->floor.b);
+	printf("Player start position: (%f, %f)\n", map_data->player_start_x, map_data->player_start_y);
+	map_data->map_config = map_config;
+	return (TRUE);
 }
