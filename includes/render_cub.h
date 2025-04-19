@@ -21,9 +21,13 @@
 int     handle_keypress(int keycode, t_game *game);
 int     close_window(t_game *game);
 int     update_loop(t_game *game);
+// int     update_loop(void *param);
 
 // player
 void    config_player(t_game *game);
 void    config_starting_dir(t_game *game);
+
+// render_utils
+void    my_mlx_pixel_put(t_game *game, int x, int y, int color);
 
 #endif
