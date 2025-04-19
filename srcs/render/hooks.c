@@ -125,7 +125,8 @@ int	update_loop(t_game *game)
 	x = 0;
 	while (x < game->renderer.win_width)
 	{
-		camera_x = 2 * x / game->renderer.win_width - 1;
+		camera_x = 2 * x / (double)game->renderer.win_width - 1;
+		// camera_x = 1.0 - 2.0 * x / game->renderer.win_width;
 
 		ray_dir_x = game->player.dir_x + game->player.plane_x * camera_x;
 		ray_dir_y = game->player.dir_y + game->player.plane_y * camera_x;
