@@ -101,16 +101,26 @@
 // 	}
 // }
 
+int	handle_keypress(int keycode, t_game *game)
+{
+	if (keycode == ESCAPE)
+	{
+		cleanup_game(game);
+		exit(0);
+	}
+	return (0);
+}
+
 // int	handle_keypress(int keycode, t_game *game)
 // {
-// 	double moveSpeed = 0.05;
-// 	double rotSpeed  = 0.03;
+	// double moveSpeed = 0.05;
+	// double rotSpeed  = 0.03;
 
-// 	if (keycode == ESCAPE)
-// 	{
-// 		cleanup_game(game);
-// 		exit(0);
-// 	}
+	// if (keycode == ESCAPE)
+	// {
+	// 	cleanup_game(game);
+	// 	exit(0);
+	// }
 // 	else if (keycode == UP)
 // 		moove_player_up(game);
 // 	else if (keycode == UP)
@@ -176,5 +186,12 @@ int	close_window(t_game *game)
 {
 	cleanup_game(game);
 	exit(0);
+	return (0);
+}
+
+int	update_loop(t_game *game)
+{
+	mlx_put_image_to_window(game->renderer.mlx, game->renderer.win,
+		game->renderer.frame.img, 0, 0);
 	return (0);
 }

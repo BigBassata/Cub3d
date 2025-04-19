@@ -29,10 +29,11 @@ int main(int argc, char **argv)
 		cleanup_game(game);
 		return (print_error("Window initialization failed"), 1);
 	}
-	mlx_put_image_to_window(game->renderer.mlx, game->renderer.win,
-		game->renderer.frame.img, 0, 0);
+	mlx_hook(game->renderer.win, 2, (1L << 0), handle_keypress, game);
+	mlx_hook(game->renderer.win, 17, 0, close_window, game);
+	mlx_loop_hook(game->renderer.mlx, update_loop, game);
 	mlx_loop(game->renderer.mlx);
-	cleanup_game(game);
+	// cleanup_game(game);
 	return (0);
 }
 // #endif

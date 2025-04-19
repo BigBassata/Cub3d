@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "parsing_cub.h"
+# include "render_cub.h"
 # include "struct_cub.h"
 # include "test.h"
 # include "../Unity/src/unity.h"

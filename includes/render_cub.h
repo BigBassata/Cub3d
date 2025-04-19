@@ -18,7 +18,8 @@
 # include "parsing_cub.h"
 
 // Hooks
-int	close_window(t_game *game); 
-
+int handle_keypress(int keycode, t_game *game);
+int close_window(t_game *game);
+int update_loop(t_game *game);
 
 #endif
