@@ -25,57 +25,57 @@ int	handle_keypress(int keycode, t_game *game)
 	else if (keycode == 122) // 'z' : UP
 	{
 		if (game->map_data->map_config->map[(int)(game->player.pos_y)]
-			[(int)(game->player.pos_x + game->player.dir_x * move_speed)] == 0)
+			[(int)(game->player.pos_x + game->player.dir_x * move_speed)] == '0')
 			game->player.pos_x += game->player.dir_x * move_speed;
 		if (game->map_data->map_config->map[(int)(game->player.pos_y + game->player.dir_y * move_speed)]
-			[(int)(game->player.pos_x)] == 0)
+			[(int)(game->player.pos_x)] == '0')
 			game->player.pos_y += game->player.dir_y * move_speed;
 	}
 	else if (keycode == 115) // 's' : back
 	{
 		if (game->map_data->map_config->map[(int)(game->player.pos_y)]
-			[(int)(game->player.pos_x - game->player.dir_x * move_speed)] == 0)
+			[(int)(game->player.pos_x - game->player.dir_x * move_speed)] == '0')
 			game->player.pos_x -= game->player.dir_x * move_speed;
 		if (game->map_data->map_config->map[(int)(game->player.pos_y - game->player.dir_y * move_speed)]
-			[(int)(game->player.pos_x)] == 0)
+			[(int)(game->player.pos_x)] == '0')
 			game->player.pos_y -= game->player.dir_y * move_speed;
 	}
 	else if (keycode == 65363) // Rot left : right arrow
 	{
-		double old_dirX = game->player.dir_x;
+		double old_dir_X = game->player.dir_x;
 		game->player.dir_x = game->player.dir_x * cos(rot_speed) - game->player.dir_y * sin(rot_speed);
-		game->player.dir_y = old_dirX * sin(rot_speed) + game->player.dir_y * cos(rot_speed);
-		double old_planeX = game->player.plane_x;
+		game->player.dir_y = old_dir_X * sin(rot_speed) + game->player.dir_y * cos(rot_speed);
+		double old_plane_X = game->player.plane_x;
 		game->player.plane_x = game->player.plane_x * cos(rot_speed) - game->player.plane_y * sin(rot_speed);
-		game->player.plane_y = old_planeX * sin(rot_speed) + game->player.plane_y * cos(rot_speed);
+		game->player.plane_y = old_plane_X * sin(rot_speed) + game->player.plane_y * cos(rot_speed);
 	}
 	else if (keycode == 65361) // Rot right : left arrow
 	{
-		double old_dirX = game->player.dir_x;
+		double old_dir_X = game->player.dir_x;
 		game->player.dir_x = game->player.dir_x * cos(-rot_speed) - game->player.dir_y * sin(-rot_speed);
-		game->player.dir_y = old_dirX * sin(-rot_speed) + game->player.dir_y * cos(-rot_speed);
-		double old_planeX = game->player.plane_x;
+		game->player.dir_y = old_dir_X * sin(-rot_speed) + game->player.dir_y * cos(-rot_speed);
+		double old_plane_X = game->player.plane_x;
 		game->player.plane_x = game->player.plane_x * cos(-rot_speed) - game->player.plane_y * sin(-rot_speed);
-		game->player.plane_y = old_planeX * sin(-rot_speed) + game->player.plane_y * cos(-rot_speed);
+		game->player.plane_y = old_plane_X * sin(-rot_speed) + game->player.plane_y * cos(-rot_speed);
 	}
 	else if (keycode == 100) // 'd' : strafe left
 	{
-		// left lateral vector is (-dirY, dirX)
+		// left lateral vector is (-dir_y, dir_x)
 		if (game->map_data->map_config->map[(int)(game->player.pos_y)]
-					[(int)(game->player.pos_x - game->player.dir_y * move_speed)] == 0)
+			[(int)(game->player.pos_x - game->player.dir_y * move_speed)] == '0')
 			game->player.pos_x -= game->player.dir_y * move_speed;
 		if (game->map_data->map_config->map[(int)(game->player.pos_y + game->player.dir_x * move_speed)]
-					[(int)(game->player.pos_x)] == 0)
+			[(int)(game->player.pos_x)] == '0')
 			game->player.pos_y += game->player.dir_x * move_speed;
 	}
 	else if (keycode == 113) // 'q' : strafe right
 	{
-		// right lateral vector is (dirY, -dirX)
+		// right lateral vector is (dir_y, -dir_x)
 		if (game->map_data->map_config->map[(int)(game->player.pos_y)]
-					[(int)(game->player.pos_x + game->player.dir_y * move_speed)] == 0)
+			[(int)(game->player.pos_x + game->player.dir_y * move_speed)] == '0')
 			game->player.pos_x += game->player.dir_y * move_speed;
 		if (game->map_data->map_config->map[(int)(game->player.pos_y - game->player.dir_x * move_speed)]
-					[(int)(game->player.pos_x)] == 0)
+			[(int)(game->player.pos_x)] == '0')
 			game->player.pos_y -= game->player.dir_x * move_speed;
 	}
 	return (0);

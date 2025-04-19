@@ -87,6 +87,7 @@ int	game_map_creation(t_map_config *map_config)
 	transform_spaces_to_walls(map_config);
 	if (is_closed_map(map_config) == ERROR)
 		return (ERROR);
+	map_config->map[map_config->start_y][map_config->start_x] = '0';
 	return (TRUE);
 }
 
