@@ -39,7 +39,7 @@ SRC_FILES = main.c init.c \
 	parsing/map_config_validation.c parsing/game_map_utils_1.c parsing/game_map_utils_2.c \
 	parsing/game_map_utils_3.c parsing/map_config_colors_1.c parsing/map_config_colors_2.c \
 	parsing/parse_map.c utils/utils.c utils/colors_utils.c cleanup/ft_cleanup.c window/window_init.c \
-	render/hooks.c
+	render/hooks.c render/player.c
 
 ##### SOURCES DE TESTS #####
 TESTS_SRC_FILES = main_test.c \

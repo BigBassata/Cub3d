@@ -5,6 +5,8 @@
     "stat.h": "c",
     "unity.h": "c",
     "stdlib.h": "c",
-    "test.h": "c"
+    "test.h": "c",
+    "parsing_cub.h": "c",
+    "struct_cub.h": "c"
   }
 }

@@ -40,6 +40,10 @@
 # define ROTATION_LEFT 65363
 # define ROTATION_RIGHT 65361
 
+/* Player settings */
+# define PLANE_X 0.0
+# define PLANE_Y 0.66
+
 /* Mouse Settings */
 # define MOUSE_SENSITIVITY 0.0003
 # define MOUSE_CAPTURE_KEY 109
