@@ -23,6 +23,7 @@ int	handle_keypress(int keycode, t_game *game)
 		exit(0);
 	}
 	else if (keycode == 122) // 'z' : UP
+	// else if (keycode == UP) // 'w' : UP
 	{
 		if (game->map_data->map_config->map[(int)(game->player.pos_y)]
 			[(int)(game->player.pos_x + game->player.dir_x * move_speed)] == '0')
@@ -31,7 +32,7 @@ int	handle_keypress(int keycode, t_game *game)
 			[(int)(game->player.pos_x)] == '0')
 			game->player.pos_y += game->player.dir_y * move_speed;
 	}
-	else if (keycode == 115) // 's' : back
+	else if (keycode == DOWN) // 's' : back
 	{
 		if (game->map_data->map_config->map[(int)(game->player.pos_y)]
 			[(int)(game->player.pos_x - game->player.dir_x * move_speed)] == '0')
@@ -40,7 +41,7 @@ int	handle_keypress(int keycode, t_game *game)
 			[(int)(game->player.pos_x)] == '0')
 			game->player.pos_y -= game->player.dir_y * move_speed;
 	}
-	else if (keycode == 65363) // Rot left : right arrow
+	else if (keycode == ROTATION_LEFT) // Rot left
 	{
 		double old_dir_X = game->player.dir_x;
 		game->player.dir_x = game->player.dir_x * cos(rot_speed) - game->player.dir_y * sin(rot_speed);
@@ -49,7 +50,7 @@ int	handle_keypress(int keycode, t_game *game)
 		game->player.plane_x = game->player.plane_x * cos(rot_speed) - game->player.plane_y * sin(rot_speed);
 		game->player.plane_y = old_plane_X * sin(rot_speed) + game->player.plane_y * cos(rot_speed);
 	}
-	else if (keycode == 65361) // Rot right : left arrow
+	else if (keycode == ROTATION_RIGHT) // Rot right
 	{
 		double old_dir_X = game->player.dir_x;
 		game->player.dir_x = game->player.dir_x * cos(-rot_speed) - game->player.dir_y * sin(-rot_speed);
@@ -58,7 +59,8 @@ int	handle_keypress(int keycode, t_game *game)
 		game->player.plane_x = game->player.plane_x * cos(-rot_speed) - game->player.plane_y * sin(-rot_speed);
 		game->player.plane_y = old_plane_X * sin(-rot_speed) + game->player.plane_y * cos(-rot_speed);
 	}
-	else if (keycode == 100) // 'd' : strafe left
+	else if (keycode == 100) // 'd' : left side
+	// else if (keycode == LEFT) // 'a' : left side
 	{
 		// left lateral vector is (-dir_y, dir_x)
 		if (game->map_data->map_config->map[(int)(game->player.pos_y)]
@@ -68,7 +70,8 @@ int	handle_keypress(int keycode, t_game *game)
 			[(int)(game->player.pos_x)] == '0')
 			game->player.pos_y += game->player.dir_x * move_speed;
 	}
-	else if (keycode == 113) // 'q' : strafe right
+	else if (keycode == 113) // 'q' : right side
+	// else if (keycode == RIGHT) // 'd' : right side
 	{
 		// right lateral vector is (dir_y, -dir_x)
 		if (game->map_data->map_config->map[(int)(game->player.pos_y)]
