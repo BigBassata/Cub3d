@@ -44,5 +44,7 @@ int init_window(t_game *game)
 	if (!game->renderer.frame.addr)
 		return (cleanup_graphics(game),
 			print_error("Failed to create data addr"), ERROR);
+	game->renderer.win_width = (double)WINDOW_WIDTH;
+	game->renderer.win_height = (double)WINDOW_HEIGHT;
 	return (TRUE);
 }

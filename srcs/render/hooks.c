@@ -191,6 +191,77 @@ int	close_window(t_game *game)
 
 int	update_loop(t_game *game)
 {
+	int		x;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	delta_dist_X;
+	double	delta_dist_y;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	double	side_dist_x;
+	double	side_dist_y;
+
+	int		hit;
+	int		side; // 0 : vertical wall, 1 : horizontal wall
+
+	x = 0;
+	while (x < game->renderer.win_width)
+	{
+		camera_x = 2 * x / game->renderer.win_width - 1;
+
+		ray_dir_x = game->player.dir_x + game->player.plane_x * camera_x;
+		ray_dir_y = game->player.dir_y + game->player.plane_y * camera_x;
+
+		map_x = (int)(game->player.pos_x);
+		map_y = (int)(game->player.pos_y);
+
+		delta_dist_X = (ray_dir_x == 0) ? 1e30 : fabs(1.0 / ray_dir_x);
+		delta_dist_y = (ray_dir_y == 0) ? 1e30 : fabs(1.0 / ray_dir_y);
+
+        if (ray_dir_x < 0)
+        {
+            step_x = -1;
+            side_dist_x = (game->player.pos_x - map_x) * delta_dist_X;
+        }
+        else
+        {
+            step_x = 1;
+            side_dist_x = (map_x + 1.0 - game->player.pos_x) * delta_dist_X;
+        }
+        if (ray_dir_y < 0)
+        {
+            step_y = -1;
+            side_dist_y = (data->player.posY - map_y) * delta_dist_y;
+        }
+        else
+        {
+            step_y = 1;
+            side_dist_y = (map_y + 1.0 - data->player.posY) * delta_dist_y;
+        }
+		x++;
+	}
+	// DDA algorithm
+	hit = 0;
+	while (hit == 0)
+	{
+		if (side_dist_x < side_dist_y)
+		{
+			side_dist_x += delta_dist_X;
+			map_x += step_x;
+			side = 0;
+		}
+		else
+		{
+			side_dist_y += delta_dist_y;
+			map_y += step_y;
+			side = 1;
+		}
+		if (game->map[map_y][map_x] > 0)
+			hit = 1;
+	}
 	mlx_put_image_to_window(game->renderer.mlx, game->renderer.win,
 		game->renderer.frame.img, 0, 0);
 	return (0);

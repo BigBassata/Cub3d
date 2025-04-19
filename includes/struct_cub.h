@@ -168,6 +168,8 @@ typedef struct s_renderer
     t_minimap minimap;
     t_texture *current_texture;
     int render_flags;
+    double win_width;
+    double win_height;
 } t_renderer;
 
 /* Structures de gestion des états du jeu */
