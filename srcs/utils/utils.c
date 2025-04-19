@@ -23,7 +23,7 @@ double	get_time(void)
 
 void	print_error(char *error)
 {
-	ft_putstr_fd("Error: ", 2);
+	ft_putstr_fd("Error\n", 2);
 	if (error)
 		ft_putstr_fd(error, 2);
 	ft_putendl_fd("", 2);
@@ -31,7 +31,7 @@ void	print_error(char *error)
 
 void	print_error_arg(char *error, char *arg)
 {
-	ft_putstr_fd("Error: ", 2);
+	ft_putstr_fd("Error\n", 2);
 	if (error)
 		ft_putstr_fd(error, 2);
 	if (arg)
