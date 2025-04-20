@@ -196,6 +196,24 @@ int	update_loop(t_game *game)
 		if (draw_end >= game->renderer.win_height)
 			draw_end = game->renderer.win_height - 1;
 
+        // exact point of impact on the wall (wall_x)
+        double wall_x = (side == 0)
+            ? game->player.pos_y + perp_wall_dist * ray_dir_y
+            : game->player.pos_x + perp_wall_dist * ray_dir_x;
+        wall_x -= floor(wall_x);
+
+        // select texture
+        t_texture *tex;
+        if (side == 0) {
+            tex = ray_dir_x > 0 ? &game->map_data->east : &game->map_data->west;
+        } else {
+            tex = ray_dir_y > 0 ? &game->map_data->south : &game->map_data->north;
+        }
+        // horizontal coordinate in the texture
+        int tex_x = (int)(wall_x * tex->width);
+        if ((side == 0 && ray_dir_x > 0) || (side == 1 && ray_dir_y < 0))
+            tex_x = tex->width - tex_x - 1;
+
 		// Ceiling (from y=0 to draw_start-1)
 		int y = 0;
 		while (y < draw_start)
@@ -210,14 +228,26 @@ int	update_loop(t_game *game)
 			my_mlx_pixel_put(game, x, y, game->map_data->floor.value);
 			y++;		
 		}
-		// Red vertical wall, Green horizontal wall
-		int color = (side == 0) ? 0xFF0000 : 0x00FF00;
-		y = draw_start;
-		while (y < draw_end)
-		{
-			my_mlx_pixel_put(game, x, y, color);
-			y++;
-		}
+		// // Red vertical wall, Green horizontal wall
+		// int color = (side == 0) ? 0xFF0000 : 0x00FF00;
+		// y = draw_start;
+		// while (y < draw_end)
+		// {
+		// 	my_mlx_pixel_put(game, x, y, color);
+		// 	y++;
+		// }
+
+		// draw the textured slice
+        for (int y = draw_start; y < draw_end; y++)
+        {
+            int draw_y = y - draw_start;
+            int tex_y = (draw_y * tex->height) / line_height;
+            unsigned int *pixel = 
+                (unsigned int*)(tex->addr
+                  + tex_y * tex->line_length
+                  + tex_x * (tex->bits_per_pixel/8));
+            my_mlx_pixel_put(game, x, y, *pixel);
+        }
 		x++;
 	}
 	mlx_put_image_to_window(game->renderer.mlx, game->renderer.win,
@@ -240,14 +270,12 @@ int	handle_resize(int new_w, int new_h, t_game *game)
 	mlx_destroy_image(game->renderer.mlx, game->renderer.frame.img);
 	game->renderer.frame.img = mlx_new_image(game->renderer.mlx, new_w, new_h);
 	if (!game->renderer.frame.img)
-		return (cleanup_game(game),
-			print_error("Failed to create image"), ERROR);
+		clean_error_exit(game, "Failed to create image");
 	game->renderer.frame.addr = mlx_get_data_addr(game->renderer.frame.img,
 		&game->renderer.frame.bits_per_pixel,
 		&game->renderer.frame.line_length,
 		&game->renderer.frame.endian);
 	if (!game->renderer.frame.addr)
-		return (cleanup_game(game),
-			print_error("Failed to create data addr"), ERROR);
+		clean_error_exit(game, "Failed to create data addr");
 	return (0);
 }

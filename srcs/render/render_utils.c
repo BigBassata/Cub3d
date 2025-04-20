@@ -36,3 +36,27 @@ void	config_colors(t_game *game)
 	game->map_data->floor.value = 0;
 	game->map_data->floor.value = (f[0] << 16) | (f[1] << 8) | (f[2]);
 }
+
+void	config_textures(t_game *game)
+{
+	load_texture(game, &game->map_data->north,
+		game->map_data->map_config->no_path);
+	load_texture(game, &game->map_data->south,
+		game->map_data->map_config->so_path);
+	load_texture(game, &game->map_data->east,
+		game->map_data->map_config->ea_path);
+	load_texture(game, &game->map_data->west,
+		game->map_data->map_config->we_path);
+}
+
+void load_texture(t_game *game, t_texture *tex, char *path)
+{
+    tex->img = mlx_xpm_file_to_image(game->renderer.mlx, path, &tex->width,
+		&tex->height);
+	if (!tex->img)
+		clean_error_exit(game, "Failed to create texture image");
+    tex->addr = mlx_get_data_addr(tex->img, &tex->bits_per_pixel,
+        &tex->line_length, &tex->endian);
+	if (!tex->addr)
+		clean_error_exit(game, "Failed to create texture data addr");
+}

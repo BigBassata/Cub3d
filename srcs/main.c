@@ -31,6 +31,7 @@ int main(int argc, char **argv)
 	}
 	config_player(game);
 	config_colors(game);
+	config_textures(game);
 	mlx_hook(game->renderer.win, 2, (1L << 0), handle_keypress, game);
 	mlx_hook(game->renderer.win, 17, 0, close_window, game);
 	mlx_hook(game->renderer.win, 25, 0, handle_resize, game);

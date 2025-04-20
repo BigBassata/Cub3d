@@ -66,6 +66,9 @@ void 			free_2d_array(char **array, int height);
 double	        get_time(void);
 int             create_trgb(int t, int r, int g, int b);
 
+// utils_2
+void            clean_error_exit(t_game *game, char *error);
+
 // cleanup fonctions
 void 			clean_map_data(t_map_data *map, void *mlx);
 void 			cleanup_game(t_game *game);

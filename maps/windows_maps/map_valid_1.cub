@@ -1,15 +1,15 @@
 
 
 
-    NO    wall_textures/path.png     
+    NO    wall_textures/north.xpm    
 
-    SO    wall_textures/path.png 
-
-
-    EA    wall_textures/path.png 
+    SO    wall_textures/south.xpm 
 
 
-    WE    wall_textures/path.png 
+    EA    wall_textures/east.xpm 
+
+
+    WE    wall_textures/west.xpm 
 
     C     135,206,235
 

@@ -24,10 +24,10 @@ static int	texture_file_validation(char *path)
 	len = ft_strlen(path);
 	if (len < 5)
 		return (print_error_arg("invalid file format, usage"
-				"<filename>.png\n", path), ERROR);
-	if (path[len - 5] == '/' || ft_strncmp(&path[len - 4], ".png", 4) != 0)
+				"<filename>.xpm\n", path), ERROR);
+	if (path[len - 5] == '/' || ft_strncmp(&path[len - 4], ".xpm", 4) != 0)
 		return (print_error_arg("invalid file format, usage"
-				"<filename>.png\n", path), ERROR);
+				"<filename>.xpm\n", path), ERROR);
 	return (TRUE);
 }
 

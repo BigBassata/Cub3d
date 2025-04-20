@@ -64,7 +64,7 @@ typedef struct s_texture
 {
     char *path;
     void *img;
-    int *addr;
+    char *addr;
     int width;
     int height;
     int bits_per_pixel;
