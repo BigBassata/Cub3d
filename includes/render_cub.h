@@ -22,6 +22,7 @@ int     handle_keypress(int keycode, t_game *game);
 int     close_window(t_game *game);
 int     update_loop(t_game *game);
 // int     update_loop(void *param);
+int     handle_resize(int new_w, int new_h, t_game *game);
 
 // player
 void    config_player(t_game *game);

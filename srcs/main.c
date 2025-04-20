@@ -33,9 +33,9 @@ int main(int argc, char **argv)
 	config_colors(game);
 	mlx_hook(game->renderer.win, 2, (1L << 0), handle_keypress, game);
 	mlx_hook(game->renderer.win, 17, 0, close_window, game);
+	mlx_hook(game->renderer.win, 25, 0, handle_resize, game);
 	mlx_loop_hook(game->renderer.mlx, update_loop, game);
 	mlx_loop(game->renderer.mlx);
-	// cleanup_game(game);
 	return (0);
 }
 // #endif

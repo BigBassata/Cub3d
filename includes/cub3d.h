@@ -52,6 +52,10 @@
 /* Window */
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
+# define WIN_MIN_WIDTH 320
+# define WIN_MIN_HEIGHT 240
+# define WIN_MAX_WIDTH 1920
+# define WIN_MAX_HEIGHT 1080
 # define EXTENSION_NAME ".cub"
 # define WINDOW_NAME "cub3D"
 
