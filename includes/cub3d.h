@@ -33,6 +33,10 @@
 # define EXIT_WIN 17
 # define ESCAPE 65307
 
+# define UP_Z 119
+# define LEFT_D 100
+# define RIGHT_Q 113
+
 # define UP 119
 # define DOWN 115
 # define LEFT 97
