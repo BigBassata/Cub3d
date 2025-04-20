@@ -33,16 +33,14 @@ int init_window(t_game *game)
 		return (print_error("Failed to create window"), ERROR);    
 	game->renderer.frame.img = mlx_new_image(game->renderer.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	if (!game->renderer.frame.img)
-	{
-		mlx_destroy_window(game->renderer.mlx, game->renderer.win);
-		return (print_error("Failed to create image"), ERROR);
-	}
+		return (cleanup_game(game),
+			print_error("Failed to create image"), ERROR);
 	game->renderer.frame.addr = mlx_get_data_addr(game->renderer.frame.img,
 		&game->renderer.frame.bits_per_pixel,
 		&game->renderer.frame.line_length,
 		&game->renderer.frame.endian);
 	if (!game->renderer.frame.addr)
-		return (cleanup_graphics(game),
+		return (cleanup_game(game),
 			print_error("Failed to create data addr"), ERROR);
 	game->renderer.win_width = (double)WINDOW_WIDTH;
 	game->renderer.win_height = (double)WINDOW_HEIGHT;

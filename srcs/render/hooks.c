@@ -239,12 +239,15 @@ int	handle_resize(int new_w, int new_h, t_game *game)
 	game->renderer.win_height = new_h;
 	mlx_destroy_image(game->renderer.mlx, game->renderer.frame.img);
 	game->renderer.frame.img = mlx_new_image(game->renderer.mlx, new_w, new_h);
+	if (!game->renderer.frame.img)
+		return (cleanup_game(game),
+			print_error("Failed to create image"), ERROR);
 	game->renderer.frame.addr = mlx_get_data_addr(game->renderer.frame.img,
 		&game->renderer.frame.bits_per_pixel,
 		&game->renderer.frame.line_length,
 		&game->renderer.frame.endian);
 	if (!game->renderer.frame.addr)
-		return (cleanup_graphics(game),
+		return (cleanup_game(game),
 			print_error("Failed to create data addr"), ERROR);
 	return (0);
 }
