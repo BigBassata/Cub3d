@@ -195,9 +195,24 @@ int	update_loop(t_game *game)
 		draw_end = line_height / 2 + game->renderer.win_height / 2;
 		if (draw_end >= game->renderer.win_height)
 			draw_end = game->renderer.win_height - 1;
-		
-		int color = (side == 0) ? 0xFF0000 : 0x00FF00;  // Red vertical wall, Green horizontal wall
-		int y = draw_start;
+
+		// Ceiling (from y=0 to draw_start-1)
+		int y = 0;
+		while (y < draw_start)
+		{
+			my_mlx_pixel_put(game, x, y, game->map_data->ceiling.value);
+			y++;	
+		}
+		// Floor (from y=draw_end to WIN_HEIGHT-1)
+		y = draw_end;
+		while (y < game->renderer.win_height)
+		{
+			my_mlx_pixel_put(game, x, y, game->map_data->floor.value);
+			y++;		
+		}
+		// Red vertical wall, Green horizontal wall
+		int color = (side == 0) ? 0xFF0000 : 0x00FF00;
+		y = draw_start;
 		while (y < draw_end)
 		{
 			my_mlx_pixel_put(game, x, y, color);

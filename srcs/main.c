@@ -30,6 +30,7 @@ int main(int argc, char **argv)
 		return (print_error("Window initialization failed"), 1);
 	}
 	config_player(game);
+	config_colors(game);
 	mlx_hook(game->renderer.win, 2, (1L << 0), handle_keypress, game);
 	mlx_hook(game->renderer.win, 17, 0, close_window, game);
 	mlx_loop_hook(game->renderer.mlx, update_loop, game);

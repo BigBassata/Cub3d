@@ -23,3 +23,16 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
     dst = game->renderer.frame.addr + (y * line_length + x * (bpp / 8));
     *(unsigned int*)dst = color;
 }
+
+void	config_colors(t_game *game)
+{
+	int	*c;
+	int	*f;
+
+	c = game->map_data->map_config->c_color;
+	f = game->map_data->map_config->f_color;
+	game->map_data->ceiling.value = 0;
+	game->map_data->ceiling.value = (c[0] << 16) | (c[1] << 8) | (c[2]);
+	game->map_data->floor.value = 0;
+	game->map_data->floor.value = (f[0] << 16) | (f[1] << 8) | (f[2]);
+}

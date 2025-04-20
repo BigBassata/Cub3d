@@ -29,5 +29,6 @@ void    config_starting_dir(t_game *game);
 
 // render_utils
 void    my_mlx_pixel_put(t_game *game, int x, int y, int color);
+void	config_colors(t_game *game);
 
 #endif
