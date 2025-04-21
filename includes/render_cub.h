@@ -18,21 +18,21 @@
 # include "parsing_cub.h"
 
 // Hooks
-int     handle_keypress(int keycode, t_game *game);
-int     close_window(t_game *game);
-int     update_loop(t_game *game);
-int     handle_resize(int new_w, int new_h, t_game *game);
+int		handle_keypress(int keycode, t_game *game);
+int		close_window(t_game *game);
+int		update_loop(t_game *game);
+int		handle_resize(int new_w, int new_h, t_game *game);
 
 // player
-void    config_player(t_game *game);
-void    config_starting_dir(t_game *game);
-void    config_starting_dir_2(t_game *game);
+void	config_player(t_game *game);
+void	config_starting_dir(t_game *game);
+void	config_starting_dir_2(t_game *game);
 
 // render_utils
-void    my_mlx_pixel_put(t_game *game, int x, int y, int color);
+void	my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void	config_colors(t_game *game);
-void    config_textures(t_game *game);
-void    load_texture(t_game *game, t_texture *tex, char *path);
+void	config_textures(t_game *game);
+void	load_texture(t_game *game, t_texture *tex, char *path);
 
 // movements
 void	upward_movement(t_game *game);
@@ -41,5 +41,19 @@ void	left_lateral_movement(t_game *game);
 void	right_lateral_movement(t_game *game);
 void	left_rotational_movement(t_game *game);
 void	right_rotational_movement(t_game *game);
+
+// raycasting
+void	darken_img_between_frame(t_game *game);
+void	config_ray_from_camera_x(t_game *game, int x);
+void	config_dda_steps_and_sidedist(t_game *game);
+void	dda_algorithm(t_game *game);
+void	handle_fisheye_effect(t_game *game);
+
+void	compute_wall_slice(t_game *game);
+void	compute_wall_hit_position(t_game *game);
+void	select_texture(t_game *game);
+void	compute_texture_x_coord(t_game *game);
+void	draw_ceiling_and_floor(t_game *game, int x);
+void	draw_textured_column(t_game *game, int x);
 
 #endif

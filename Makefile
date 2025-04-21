@@ -38,8 +38,9 @@ SRC_FILES = main.c init.c \
 	parsing/file_parsing_1.c parsing/file_parsing_2.c parsing/map_config_elements_paths.c \
 	parsing/map_config_validation.c parsing/game_map_utils_1.c parsing/game_map_utils_2.c \
 	parsing/game_map_utils_3.c parsing/map_config_colors_1.c parsing/map_config_colors_2.c \
-	parsing/parse_map.c utils/utils.c utils/colors_utils.c cleanup/ft_cleanup.c window/window_init.c \
-	render/hooks.c render/player.c render/render_utils.c utils/utils_2.c render/movements.c render/movements_2.c
+	parsing/parse_map.c utils/utils.c utils/utils_2.c utils/colors_utils.c cleanup/ft_cleanup.c window/window_init.c \
+	render/hooks.c render/player.c render/render_utils.c render/movements_1.c render/movements_2.c render/raycasting_1.c \
+	render/raycasting_2.c render/raycasting_3.c
 
 ##### SOURCES DE TESTS #####
 TESTS_SRC_FILES = main_test.c \

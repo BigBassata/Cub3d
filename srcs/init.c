@@ -48,10 +48,10 @@ t_game *init_game(void)
 		free(game);
 		return (print_error("MLX initialization failed"), NULL);
 	}
-	game->state.is_running = 1;
-	game->state.window_focused = 1;
-    game->state.last_frame = get_time();
-    game->input.mouse_sensitivity = MOUSE_SENSITIVITY;
+	// game->state.is_running = 1;
+	// game->state.window_focused = 1;
+    // game->state.last_frame = get_time();
+    // game->input.mouse_sensitivity = MOUSE_SENSITIVITY;
     game->map_data = init_map();
     if (!game->map_data)
     {

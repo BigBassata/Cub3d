@@ -30,17 +30,17 @@ typedef struct s_test_map_node
 } t_test_map_node;
 
 /* Structures basiques */
-typedef struct s_dims
-{
-    int width;
-    int height;
-} t_dims;
+// typedef struct s_dims
+// {
+//     int width;
+//     int height;
+// } t_dims;
 
-typedef struct s_point
-{
-    int x;
-    int y;
-} t_point;
+// typedef struct s_point
+// {
+//     int x;
+//     int y;
+// } t_point;
 
 typedef struct s_color
 {
@@ -85,29 +85,29 @@ typedef struct s_player
     double plane_y;
     double move_speed;
     double rot_speed;
-    int move_forward;
-    int move_backward;
-    int move_left;
-    int move_right;
-    int rotate_left;
-    int rotate_right;
-    int rotation_direction;
+    // int move_forward;
+    // int move_backward;
+    // int move_left;
+    // int move_right;
+    // int rotate_left;
+    // int rotate_right;
+    // int rotation_direction;
 } t_player;
 
 /* Structure de la minimap */
-typedef struct s_minimap
-{
-    int scale;
-    int width;
-    int height;
-    int pos_x;
-    int pos_y;
-    void *img;
-    int *addr;
-    int bits_per_pixel;
-    int line_length;
-    int endian;
-} t_minimap;
+// typedef struct s_minimap
+// {
+//     int scale;
+//     int width;
+//     int height;
+//     int pos_x;
+//     int pos_y;
+//     void *img;
+//     int *addr;
+//     int bits_per_pixel;
+//     int line_length;
+//     int endian;
+// } t_minimap;
 
 /* Structures liées au raycasting */
 typedef struct s_ray
@@ -121,32 +121,33 @@ typedef struct s_ray
     int facing_right;
 } t_ray;
 
-typedef struct s_wall_render
-{
-    int wall_height;
-    int wall_top;
-    int wall_bottom;
-    double wall_x;
-    int tex_x;
-    double step;
-    double tex_pos;
-    double shade;
-    int tex_y;
-    t_player *player;
-} t_wall_render;
+// typedef struct s_wall_render
+// {
+//     int wall_height;
+//     int wall_top;
+//     int wall_bottom;
+//     double wall_x;
+//     int tex_x;
+//     double step;
+//     double tex_pos;
+//     double shade;
+//     int tex_y;
+//     t_player *player;
+// } t_wall_render;
 
-typedef struct s_color_data
-{
-    int ceiling_color;
-    int floor_color;
-    unsigned int color;
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-} t_color_data;
+// typedef struct s_color_data
+// {
+//     int ceiling_color;
+//     int floor_color;
+//     unsigned int color;
+//     unsigned char r;
+//     unsigned char g;
+//     unsigned char b;
+// } t_color_data;
 
 typedef struct s_dda_data
 {
+    double	camera_x;
     double ray_dir_x;
     double ray_dir_y;
     double delta_dist_x;
@@ -157,6 +158,8 @@ typedef struct s_dda_data
     double side_dist_y;
     int step_x;
     int step_y;
+    int hit;
+    int side; // 0 : vertical wall, 1 : horizontal wall
 } t_dda_data;
 
 /* Structures liées au rendu */
@@ -165,7 +168,7 @@ typedef struct s_renderer
     void *mlx;
     void *win;
     t_img frame;
-    t_minimap minimap;
+    // t_minimap minimap;
     t_texture *current_texture;
     int render_flags;
     int win_width;
@@ -173,30 +176,30 @@ typedef struct s_renderer
 } t_renderer;
 
 /* Structures de gestion des états du jeu */
-typedef struct s_game_state
-{
-    int is_running;
-    int window_focused;
-    int mouse_captured;
-    double last_frame;
-    double delta_time;
-    double fps;
-    int status_anim_frame;
-    int status_transitioning;
-} t_game_state;
+// typedef struct s_game_state
+// {
+//     int is_running;
+//     int window_focused;
+//     int mouse_captured;
+//     double last_frame;
+//     double delta_time;
+//     double fps;
+//     int status_anim_frame;
+//     int status_transitioning;
+// } t_game_state;
 
-typedef struct s_input
-{
-    int move_forward;
-    int move_backward;
-    int move_left;
-    int move_right;
-    int rotate_left;
-    int rotate_right;
-    int last_mouse_x;
-    int last_mouse_y;
-    double mouse_sensitivity;
-} t_input;
+// typedef struct s_input
+// {
+//     int move_forward;
+//     int move_backward;
+//     int move_left;
+//     int move_right;
+//     int rotate_left;
+//     int rotate_right;
+//     int last_mouse_x;
+//     int last_mouse_y;
+//     double mouse_sensitivity;
+// } t_input;
 
 /* Structure de configuration de la carte (existante) */
 typedef struct s_map_config
@@ -238,36 +241,50 @@ typedef struct s_map_data
     t_map_config *map_config;
 } t_map_data;
 
+typedef struct s_column_render
+{
+    double perp_wall_dist;
+    int line_height;
+    int draw_start;
+    int draw_end;
+    double wall_x;
+    t_texture   *texture;
+    int texture_x;
+    int texture_y;
+} t_column_render;
+
 /* Structure principale du jeu */
 typedef struct s_game
 {
     t_renderer renderer;
-    t_game_state state;
-    t_input input;
+    t_dda_data dda;
+    t_column_render col_render;
+    // t_game_state state;
+    // t_input input;
     t_map_data *map_data;
     t_player player;
     char **map;
-    double move_speed;
+    // double move_speed;
 } t_game;
 
 /* Structures auxiliaires pour le dessin */
-typedef struct s_square_data
-{
-    int scale;
-    int offset_x;
-    int offset_y;
-    int map_x;
-    int map_y;
-    int color;
-} t_square_data;
+// typedef struct s_square_data
+// {
+//     int scale;
+//     int offset_x;
+//     int offset_y;
+//     int map_x;
+//     int map_y;
+//     int color;
+// } t_square_data;
 
-typedef struct s_draw_player_data
-{
-    int size;
-    double angle;
-    int arrow_x[3];
-    int arrow_y[3];
-    t_player *player;
-} t_draw_player_data;
+// typedef struct s_draw_player_data
+// {
+//     int size;
+//     double angle;
+//     int arrow_x[3];
+//     int arrow_y[3];
+//     t_player *player;
+// } t_draw_player_data;
 
 #endif
