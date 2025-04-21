@@ -46,6 +46,7 @@ void	right_rotational_movement(t_game *game);
 void	darken_img_between_frame(t_game *game);
 void	config_ray_from_camera_x(t_game *game, int x);
 void	config_dda_steps_and_sidedist(t_game *game);
+void	config_dda_steps_and_sidedist_2(t_game *game);
 void	dda_algorithm(t_game *game);
 void	handle_fisheye_effect(t_game *game);
 

@@ -65,6 +65,9 @@
 # define EXTENSION_NAME ".cub"
 # define WINDOW_NAME "cub3D"
 
+/* Window */
+# define DARKEN_COLOR 0x000000
+
 //utils
 void			print_error(char *error);
 void			print_error_arg(char *error, char *arg);

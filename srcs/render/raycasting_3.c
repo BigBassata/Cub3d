@@ -39,3 +39,21 @@ void	draw_textured_column(t_game *game, int x)
 		y++;
 	}
 }
+
+void	config_dda_steps_and_sidedist_2(t_game *game)
+{
+	double	dist;
+
+	if (game->dda.ray_dir_y < 0)
+	{
+		game->dda.step_y = -1;
+		dist = game->player.pos_y - game->dda.map_y;
+		game->dda.side_dist_y = dist * game->dda.delta_dist_y;
+	}
+	else
+	{
+		game->dda.step_y = 1;
+		dist = (game->dda.map_y + 1.0 - game->player.pos_y);
+		game->dda.side_dist_y = dist * game->dda.delta_dist_y;
+	}
+}
