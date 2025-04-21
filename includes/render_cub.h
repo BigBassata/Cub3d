@@ -21,17 +21,25 @@
 int     handle_keypress(int keycode, t_game *game);
 int     close_window(t_game *game);
 int     update_loop(t_game *game);
-// int     update_loop(void *param);
 int     handle_resize(int new_w, int new_h, t_game *game);
 
 // player
 void    config_player(t_game *game);
 void    config_starting_dir(t_game *game);
+void    config_starting_dir_2(t_game *game);
 
 // render_utils
 void    my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void	config_colors(t_game *game);
 void    config_textures(t_game *game);
 void    load_texture(t_game *game, t_texture *tex, char *path);
+
+// movements
+void	upward_movement(t_game *game);
+void	backward_movement(t_game *game);
+void	left_lateral_movement(t_game *game);
+void	right_lateral_movement(t_game *game);
+void	left_rotational_movement(t_game *game);
+void	right_rotational_movement(t_game *game);
 
 #endif

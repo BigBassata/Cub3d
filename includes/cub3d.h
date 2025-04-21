@@ -47,6 +47,8 @@
 /* Player settings */
 # define PLANE_X 0.0
 # define PLANE_Y 0.66
+# define MOVE_SPEED 0.05
+# define ROT_SPEED 0.03
 
 /* Mouse Settings */
 # define MOUSE_SENSITIVITY 0.0003

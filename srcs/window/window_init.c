@@ -28,10 +28,12 @@ int init_window(t_game *game)
 	mlx_get_screen_size(game->renderer.mlx, &screen_width, &screen_height);
 	if (WINDOW_WIDTH > screen_width || WINDOW_HEIGHT > screen_height)
 		return (print_error("Window size exceeds screen size"), ERROR);
-	game->renderer.win = mlx_new_window(game->renderer.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);
+	game->renderer.win = mlx_new_window(game->renderer.mlx,
+		WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);
 	if (!game->renderer.win)
 		return (print_error("Failed to create window"), ERROR);    
-	game->renderer.frame.img = mlx_new_image(game->renderer.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	game->renderer.frame.img = mlx_new_image(game->renderer.mlx,
+		WINDOW_WIDTH, WINDOW_HEIGHT);
 	if (!game->renderer.frame.img)
 		return (print_error("Failed to create image"), ERROR);
 	game->renderer.frame.addr = mlx_get_data_addr(game->renderer.frame.img,

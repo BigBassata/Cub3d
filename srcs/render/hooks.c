@@ -14,70 +14,23 @@
 
 int	handle_keypress(int keycode, t_game *game)
 {
-	double move_speed = 0.05;
-	double rot_speed  = 0.03;
-
 	if (keycode == ESCAPE)
 	{
 		cleanup_game(game);
 		exit(0);
 	}
-	else if (keycode == UP_Z)
-	{
-		if (game->map_data->map_config->map[(int)(game->player.pos_y)]
-			[(int)(game->player.pos_x + game->player.dir_x * move_speed)] == '0')
-			game->player.pos_x += game->player.dir_x * move_speed;
-		if (game->map_data->map_config->map[(int)(game->player.pos_y + game->player.dir_y * move_speed)]
-			[(int)(game->player.pos_x)] == '0')
-			game->player.pos_y += game->player.dir_y * move_speed;
-	}
+	else if (keycode == UP_Z) // QWERTY = UP, AZERTY = UP_Z
+		upward_movement(game);
 	else if (keycode == DOWN)
-	{
-		if (game->map_data->map_config->map[(int)(game->player.pos_y)]
-			[(int)(game->player.pos_x - game->player.dir_x * move_speed)] == '0')
-			game->player.pos_x -= game->player.dir_x * move_speed;
-		if (game->map_data->map_config->map[(int)(game->player.pos_y - game->player.dir_y * move_speed)]
-			[(int)(game->player.pos_x)] == '0')
-			game->player.pos_y -= game->player.dir_y * move_speed;
-	}
+		backward_movement(game);
 	else if (keycode == ROTATION_LEFT)
-	{
-		double old_dir_X = game->player.dir_x;
-		game->player.dir_x = game->player.dir_x * cos(rot_speed) - game->player.dir_y * sin(rot_speed);
-		game->player.dir_y = old_dir_X * sin(rot_speed) + game->player.dir_y * cos(rot_speed);
-		double old_plane_X = game->player.plane_x;
-		game->player.plane_x = game->player.plane_x * cos(rot_speed) - game->player.plane_y * sin(rot_speed);
-		game->player.plane_y = old_plane_X * sin(rot_speed) + game->player.plane_y * cos(rot_speed);
-	}
+		left_rotational_movement(game);
 	else if (keycode == ROTATION_RIGHT)
-	{
-		double old_dir_X = game->player.dir_x;
-		game->player.dir_x = game->player.dir_x * cos(-rot_speed) - game->player.dir_y * sin(-rot_speed);
-		game->player.dir_y = old_dir_X * sin(-rot_speed) + game->player.dir_y * cos(-rot_speed);
-		double old_plane_X = game->player.plane_x;
-		game->player.plane_x = game->player.plane_x * cos(-rot_speed) - game->player.plane_y * sin(-rot_speed);
-		game->player.plane_y = old_plane_X * sin(-rot_speed) + game->player.plane_y * cos(-rot_speed);
-	}
-	else if (keycode == LEFT_D)
-	{
-		// left lateral vector is (-dir_y, dir_x)
-		if (game->map_data->map_config->map[(int)(game->player.pos_y)]
-			[(int)(game->player.pos_x - game->player.dir_y * move_speed)] == '0')
-			game->player.pos_x -= game->player.dir_y * move_speed;
-		if (game->map_data->map_config->map[(int)(game->player.pos_y + game->player.dir_x * move_speed)]
-			[(int)(game->player.pos_x)] == '0')
-			game->player.pos_y += game->player.dir_x * move_speed;
-	}
-	else if (keycode == RIGHT_Q)
-	{
-		// right lateral vector is (dir_y, -dir_x)
-		if (game->map_data->map_config->map[(int)(game->player.pos_y)]
-			[(int)(game->player.pos_x + game->player.dir_y * move_speed)] == '0')
-			game->player.pos_x += game->player.dir_y * move_speed;
-		if (game->map_data->map_config->map[(int)(game->player.pos_y - game->player.dir_x * move_speed)]
-			[(int)(game->player.pos_x)] == '0')
-			game->player.pos_y -= game->player.dir_x * move_speed;
-	}
+		right_rotational_movement(game);
+	else if (keycode == LEFT_D)  // QWERTY = LEFT, AZERTY = LEFT_D
+		left_lateral_movement(game);
+	else if (keycode == RIGHT_Q)  // QWERTY = RIGHT, AZERTY = RIGHT_Q
+		right_lateral_movement(game);
 	return (0);
 }
 
@@ -89,9 +42,7 @@ int	close_window(t_game *game)
 }
 
 int	update_loop(t_game *game)
-// int	update_loop(void *param)
 {
-// 	t_game *game = param;
 	int		x;
 	double	camera_x;
 	double	ray_dir_x;

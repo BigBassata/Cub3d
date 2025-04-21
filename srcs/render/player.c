@@ -28,7 +28,12 @@ void	config_starting_dir(t_game *game)
 		game->player.plane_x = -0.66;
 		game->player.plane_y =  0.0;
 	}
-	else if (game->map_data->player_start_dir == 'E')
+	config_starting_dir_2(game);
+}
+
+void	config_starting_dir_2(t_game *game)
+{
+	if (game->map_data->player_start_dir == 'E')
 	{
 		game->player.dir_x   =  1.0;
 		game->player.dir_y   =  0.0;
@@ -48,5 +53,7 @@ void	config_player(t_game *game)
 {
 	game->player.pos_x = game->map_data->player_start_x + 0.5;
 	game->player.pos_y = game->map_data->player_start_y + 0.5;
+	game->player.move_speed = MOVE_SPEED;
+	game->player.rot_speed = ROT_SPEED;
 	config_starting_dir(game);
 }
