@@ -145,6 +145,7 @@ typedef struct s_ray
 //     unsigned char b;
 // } t_color_data;
 
+// side = 0 : vertical wall, 1 : horizontal wall
 typedef struct s_dda_data
 {
     double	camera_x;
@@ -159,7 +160,7 @@ typedef struct s_dda_data
     int step_x;
     int step_y;
     int hit;
-    int side; // 0 : vertical wall, 1 : horizontal wall
+    int side;
 } t_dda_data;
 
 /* Structures liées au rendu */
