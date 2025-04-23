@@ -19,3 +19,10 @@ void	clean_error_exit(t_game *game, char *error)
 	print_error(error);
 	exit(1);
 }
+
+int	close_window(t_game *game)
+{
+	cleanup_game(game);
+	exit(0);
+	return (0);
+}

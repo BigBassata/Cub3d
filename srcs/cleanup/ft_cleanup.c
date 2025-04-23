@@ -6,7 +6,7 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:47:45 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/10 16:12:03 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/22 15:20:02 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static void free_renderer(t_renderer *renderer)
         return;
     if (renderer->frame.img)
         mlx_destroy_image(renderer->mlx, renderer->frame.img);
-    // if (renderer->minimap.img)
-    //     mlx_destroy_image(renderer->mlx, renderer->minimap.img);
+    if (renderer->minimap.img)
+        mlx_destroy_image(renderer->mlx, renderer->minimap.img);
     if (renderer->win)
         mlx_destroy_window(renderer->mlx, renderer->win);
     if (renderer->mlx)

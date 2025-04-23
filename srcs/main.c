@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-// #ifndef TEST_MODE
 
 int main(int argc, char **argv)
 {
@@ -33,10 +32,10 @@ int main(int argc, char **argv)
 	config_colors(game);
 	config_textures(game);
 	mlx_hook(game->renderer.win, 2, (1L << 0), handle_keypress, game);
+	mlx_hook(game->renderer.win, 3, (1L << 1), handle_keyrelease, game);
 	mlx_hook(game->renderer.win, 17, 0, close_window, game);
 	mlx_hook(game->renderer.win, 25, 0, handle_resize, game);
 	mlx_loop_hook(game->renderer.mlx, update_loop, game);
 	mlx_loop(game->renderer.mlx);
 	return (0);
 }
-// #endif

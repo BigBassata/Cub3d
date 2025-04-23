@@ -6,7 +6,7 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:32:10 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/14 18:26:54 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/22 16:34:28 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int init_window(t_game *game)
 		return (print_error("Failed to create data addr"), ERROR);
 	game->renderer.win_width = (double)WINDOW_WIDTH;
 	game->renderer.win_height = (double)WINDOW_HEIGHT;
+	init_minimap(game);
 	return (TRUE);
 }

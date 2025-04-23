@@ -30,9 +30,20 @@
 # include <sys/types.h>
 # include <unistd.h>
 
+/* Minimap */
+# define MINIMAP_RADIUS 100
+# define MINIMAP_SCALE 8
+# define MINIMAP_BACKGROUND 0x222222 
+# define WALL_COLOR 0x888888      
+# define FLOOR_COLOR 0x444444  
+# define PLAYER_COLOR 0xFF0000
+# define MINIMAP_BORDER_COLOR 0xFFFFFF 
+# define BORDER_THICKNESS 2
+# define M_PI 3.14159265358979323846
 # define EXIT_WIN 17
 # define ESCAPE 65307
 
+/* Keycodes */
 # define UP_Z 122
 # define LEFT_D 100
 # define RIGHT_Q 113
@@ -47,8 +58,8 @@
 /* Player settings */
 # define PLANE_X 0.0
 # define PLANE_Y 0.66
-# define MOVE_SPEED 0.05
-# define ROT_SPEED 0.03
+# define MOVE_SPEED 0.025
+# define ROT_SPEED 0.02
 
 /* Mouse Settings */
 # define MOUSE_SENSITIVITY 0.0003
@@ -83,12 +94,9 @@ void 			clean_map_data(t_map_data *map, void *mlx);
 void 			cleanup_game(t_game *game);
 void            cleanup_graphics(t_game *game);
 
-
 int 			check_args(char *mapfile, int argc);
 t_map_data      *init_map(void);
 int             init_window(t_game *game);
 t_game          *init_game(void);
-
-
 
 #endif

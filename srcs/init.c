@@ -6,7 +6,7 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:51:53 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/11 16:55:14 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/22 15:36:39 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,11 @@ t_game *init_game(void)
         free(game);
         return (print_error("Map initialization failed"), NULL);
     }
+    game->input.move_forward = 0;
+    game->input.move_backward = 0;
+    game->input.move_left = 0;
+    game->input.move_right = 0;
+    game->input.rotate_left = 0;
+    game->input.rotate_right = 0;
     return (game);
 }
