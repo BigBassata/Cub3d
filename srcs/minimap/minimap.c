@@ -6,7 +6,7 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:16:56 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/22 15:35:14 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/24 18:12:12 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void clear_minimap(t_game *game)
         x = 0;
         while (x < game->renderer.minimap.width)
         {
-            if (is_in_circle(x, y, MINIMAP_RADIUS, MINIMAP_RADIUS))
-                put_pixel_minimap(game, x, y, MINIMAP_BACKGROUND);
+            put_pixel_minimap(game, x, y, MINIMAP_BACKGROUND);
             x++;
         }
         y++;

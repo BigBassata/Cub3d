@@ -6,31 +6,72 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:14:02 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/22 15:34:44 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/24 18:12:04 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+static void draw_horizontal_borders(t_game *game)
+{
+    int x;
+    int y;
+    int width;
+    int i;
+    
+    width = game->renderer.minimap.width;
+    i = 0;
+    while (i < BORDER_THICKNESS)
+    {
+        y = i;
+        x = 0;
+        while (x < width)
+        {
+            put_pixel_minimap(game, x, y, MINIMAP_BORDER_COLOR);
+            x++;
+        }
+        y = game->renderer.minimap.height - 1 - i;
+        x = 0;
+        while (x < width)
+        {
+            put_pixel_minimap(game, x, y, MINIMAP_BORDER_COLOR);
+            x++;
+        }
+        i++;
+    }
+}
+
+static void draw_vertical_borders(t_game *game)
+{
+    int x;
+    int y;
+    int height;
+    int i;
+    
+    height = game->renderer.minimap.height;
+    i = 0;
+    while (i < BORDER_THICKNESS)
+    {
+        x = i;
+        y = 0;
+        while (y < height)
+        {
+            put_pixel_minimap(game, x, y, MINIMAP_BORDER_COLOR);
+            y++;
+        }
+        x = game->renderer.minimap.width - 1 - i;
+        y = 0;
+        while (y < height)
+        {
+            put_pixel_minimap(game, x, y, MINIMAP_BORDER_COLOR);
+            y++;
+        }
+        i++;
+    }
+}
+
 void draw_border(t_game *game)
 {
-    int angle;
-    double rad;
-    int r;
-    t_point p;
-
-    angle = 0;
-    while (angle < 360)
-    {
-        rad = angle * M_PI / 180;
-        r = MINIMAP_RADIUS - BORDER_THICKNESS;
-        while (r <= MINIMAP_RADIUS)
-        {
-            p.x = MINIMAP_RADIUS + r * cos(rad);
-            p.y = MINIMAP_RADIUS + r * sin(rad);
-            put_pixel_minimap(game, p.x, p.y, MINIMAP_BORDER_COLOR);
-            r++;
-        }
-        angle++;
-    }
+    draw_horizontal_borders(game);
+    draw_vertical_borders(game);
 }

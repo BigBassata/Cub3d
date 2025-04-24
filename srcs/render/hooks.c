@@ -91,27 +91,27 @@ int update_loop(t_game *game)
 	return (0);
 }
 
-int	handle_resize(int new_w, int new_h, t_game *game)
-{
-	if (new_w < WIN_MIN_WIDTH)  
-		new_w = WIN_MIN_WIDTH;
-	if (new_h < WIN_MIN_HEIGHT) 
-		new_h = WIN_MIN_HEIGHT;
-	if (new_w > WIN_MAX_WIDTH)
-		new_w = WIN_MAX_WIDTH;
-	if (new_h > WIN_MAX_HEIGHT)
-		new_h = WIN_MAX_HEIGHT;
-	game->renderer.win_width  = new_w;
-	game->renderer.win_height = new_h;
-	mlx_destroy_image(game->renderer.mlx, game->renderer.frame.img);
-	game->renderer.frame.img = mlx_new_image(game->renderer.mlx, new_w, new_h);
-	if (!game->renderer.frame.img)
-		clean_error_exit(game, "Failed to create image");
-	game->renderer.frame.addr = mlx_get_data_addr(game->renderer.frame.img,
-		&game->renderer.frame.bits_per_pixel,
-		&game->renderer.frame.line_length,
-		&game->renderer.frame.endian);
-	if (!game->renderer.frame.addr)
-		clean_error_exit(game, "Failed to create data addr");
-	return (0);
-}
+// int	handle_resize(int new_w, int new_h, t_game *game)
+// {
+// 	if (new_w < WIN_MIN_WIDTH)  
+// 		new_w = WIN_MIN_WIDTH;
+// 	if (new_h < WIN_MIN_HEIGHT) 
+// 		new_h = WIN_MIN_HEIGHT;
+// 	if (new_w > WIN_MAX_WIDTH)
+// 		new_w = WIN_MAX_WIDTH;
+// 	if (new_h > WIN_MAX_HEIGHT)
+// 		new_h = WIN_MAX_HEIGHT;
+// 	game->renderer.win_width  = new_w;
+// 	game->renderer.win_height = new_h;
+// 	mlx_destroy_image(game->renderer.mlx, game->renderer.frame.img);
+// 	game->renderer.frame.img = mlx_new_image(game->renderer.mlx, new_w, new_h);
+// 	if (!game->renderer.frame.img)
+// 		clean_error_exit(game, "Failed to create image");
+// 	game->renderer.frame.addr = mlx_get_data_addr(game->renderer.frame.img,
+// 		&game->renderer.frame.bits_per_pixel,
+// 		&game->renderer.frame.line_length,
+// 		&game->renderer.frame.endian);
+// 	if (!game->renderer.frame.addr)
+// 		clean_error_exit(game, "Failed to create data addr");
+// 	return (0);
+// }

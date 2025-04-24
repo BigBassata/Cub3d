@@ -6,7 +6,7 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:16:37 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/22 16:10:13 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/24 18:11:58 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,9 @@ static void draw_square_helper(t_game *game, t_square_data *data)
     }
 }
 
-static int is_in_player_circle(int x, int y, int center_x, int center_y, int size)
+int is_in_rectangle(int x, int y, int width, int height)
 {
-	int dist_squared;
-
-	dist_squared = (x - center_x) * (x - center_x) + 
-		(y - center_y) * (y - center_y);
-	return (dist_squared <= (size / 2) * (size / 2));
+    return (x >= 0 && x < width && y >= 0 && y < height);
 }
 
 void draw_square(t_game *game, int map_x, int map_y, int color)
@@ -75,8 +71,8 @@ void draw_player(t_game *game)
 		x = center_x - size / 2;
 		while (x <= center_x + size / 2)
 		{
-			if (is_in_player_circle(x, y, center_x, center_y, size))
-				put_pixel_minimap(game, x, y, PLAYER_COLOR);
+			if (is_in_rectangle(x, y, center_x, center_y))
+			put_pixel_minimap(game, x, y, PLAYER_COLOR);
 			x++;
 		}
 		y++;

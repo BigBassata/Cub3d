@@ -6,7 +6,7 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:54:14 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/23 17:37:40 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/24 14:16:59 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void	config_colors(t_game *game);
 void	config_textures(t_game *game);
 void	load_texture(t_game *game, t_texture *tex, char *path);
+void    render_game(t_game *game);
 
 void update_walking_animation(t_game *game);
 void draw_ceiling_and_floor_with_bobbing(t_game *game, int x);

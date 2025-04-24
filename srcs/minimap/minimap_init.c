@@ -6,7 +6,7 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:11:35 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/22 15:36:00 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/24 18:11:53 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void init_minimap(t_game *game)
         clean_error_exit(game, "Erreur lors de l'initialisation de la minimap");
     minimap = &game->renderer.minimap;
     ft_memset(minimap, 0, sizeof(t_minimap));
-    minimap->width = MINIMAP_RADIUS * 2;
-    minimap->height = MINIMAP_RADIUS * 2;
+    minimap->width = 150;
+    minimap->height = 150; 
     minimap->scale = MINIMAP_SCALE;
     minimap->pos_x = 20;
     minimap->pos_y = 20;
@@ -58,8 +58,8 @@ void put_pixel_minimap(t_game *game, int x, int y, int color)
     minimap = &game->renderer.minimap;
     if (x < 0 || x >= minimap->width || y < 0 || y >= minimap->height)
         return;
-    if (!is_in_circle(x, y, MINIMAP_RADIUS, MINIMAP_RADIUS))
-        return;
     index = y * (minimap->line_length / 4) + x;
     minimap->addr[index] = color;
 }
+
+
