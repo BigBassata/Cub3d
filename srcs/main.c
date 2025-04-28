@@ -12,10 +12,10 @@
 
 #include "cub3d.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_game *game;
-	
+	t_game	*game;
+
 	if (check_args(argv[1], argc) != TRUE)
 		return (1);
 	game = init_game();

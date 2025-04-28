@@ -69,18 +69,18 @@ void	compute_texture_x_coord(t_game *game)
 
 void	draw_ceiling_and_floor(t_game *game, int x)
 {
-	int y;
+	int	y;
 
 	y = 0;
 	while (y < game->col_render.draw_start)
 	{
 		my_mlx_pixel_put(game, x, y, game->map_data->ceiling.value);
-		y++;	
+		y++;
 	}
 	y = game->col_render.draw_end;
 	while (y < game->renderer.win_height)
 	{
 		my_mlx_pixel_put(game, x, y, game->map_data->floor.value);
-		y++;		
+		y++;
 	}
 }

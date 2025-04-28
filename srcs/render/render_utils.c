@@ -14,14 +14,14 @@
 
 void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
 {
-    char    *dst;
+	char	*dst;
 	int		line_length;
 	int		bpp;
 
 	line_length = game->renderer.frame.line_length;
 	bpp = game->renderer.frame.bits_per_pixel;
-    dst = game->renderer.frame.addr + (y * line_length + x * (bpp / 8));
-    *(unsigned int*)dst = color;
+	dst = game->renderer.frame.addr + (y * line_length + x * (bpp / 8));
+	*(unsigned int *)dst = color;
 }
 
 void	config_colors(t_game *game)
@@ -49,14 +49,14 @@ void	config_textures(t_game *game)
 		game->map_data->map_config->we_path);
 }
 
-void load_texture(t_game *game, t_texture *tex, char *path)
+void	load_texture(t_game *game, t_texture *tex, char *path)
 {
-    tex->img = mlx_xpm_file_to_image(game->renderer.mlx, path, &tex->width,
-		&tex->height);
+	tex->img = mlx_xpm_file_to_image(game->renderer.mlx, path, &tex->width,
+			&tex->height);
 	if (!tex->img)
 		clean_error_exit(game, "Failed to create texture image");
-    tex->addr = mlx_get_data_addr(tex->img, &tex->bits_per_pixel,
-        &tex->line_length, &tex->endian);
+	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_per_pixel,
+			&tex->line_length, &tex->endian);
 	if (!tex->addr)
 		clean_error_exit(game, "Failed to create texture data addr");
 }
@@ -69,6 +69,5 @@ void	render_game(t_game *game)
 	mlx_hook(game->renderer.win, 2, (1L << 0), handle_keypress, game);
 	mlx_hook(game->renderer.win, 3, (1L << 1), handle_keyrelease, game);
 	mlx_hook(game->renderer.win, 17, 0, close_window, game);
-	// mlx_hook(game->renderer.win, 25, 0, handle_resize, game);
 	mlx_loop_hook(game->renderer.mlx, update_loop, game);
 }

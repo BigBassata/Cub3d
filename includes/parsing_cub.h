@@ -6,7 +6,7 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:54:14 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/10 16:03:35 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/28 14:52:01 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "cub3d.h"
 # include "struct_cub.h"
 
-// parse map 
-int 			parse_map(char *mapfile, t_map_data *map_data);
+// parse map
+int				parse_map(char *mapfile, t_map_data *map_data);
 
 // file validation.c
 int				is_cub_file(char *file);

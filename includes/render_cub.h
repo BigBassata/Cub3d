@@ -6,7 +6,7 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:54:14 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/24 14:16:59 by licohen          ###   ########.fr       */
+/*   Updated: 2025/04/28 14:57:52 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 
 # include "cub3d.h"
 # include "struct_cub.h"
-# include "parsing_cub.h"
 
 // Hooks
 int		handle_keypress(int keycode, t_game *game);
-int     handle_keyrelease(int keycode, t_game *game);
+int		handle_keyrelease(int keycode, t_game *game);
 int		close_window(t_game *game);
 int		update_loop(t_game *game);
 int		handle_resize(int new_w, int new_h, t_game *game);
@@ -28,18 +27,18 @@ int		handle_resize(int new_w, int new_h, t_game *game);
 void	config_player(t_game *game);
 void	config_starting_dir(t_game *game);
 void	config_starting_dir_2(t_game *game);
-void    update_player_position(t_game *game);
+void	update_player_position(t_game *game);
 
 // render_utils
 void	my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void	config_colors(t_game *game);
 void	config_textures(t_game *game);
 void	load_texture(t_game *game, t_texture *tex, char *path);
-void    render_game(t_game *game);
+void	render_game(t_game *game);
 
-void update_walking_animation(t_game *game);
-void draw_ceiling_and_floor_with_bobbing(t_game *game, int x);
-void draw_textured_column_with_bobbing(t_game *game, int x);
+void	update_walking_animation(t_game *game);
+void	draw_ceiling_and_floor_with_bobbing(t_game *game, int x);
+void	draw_textured_column_with_bobbing(t_game *game, int x);
 
 // movements
 void	upward_movement(t_game *game);
@@ -65,14 +64,14 @@ void	draw_ceiling_and_floor(t_game *game, int x);
 void	draw_textured_column(t_game *game, int x);
 
 /* Minimap */
-void    init_minimap(t_game *game);
-void    update_minimap(t_game *game);
-void    clear_minimap(t_game *game);
-void    draw_player(t_game *game);
-void    draw_square(t_game *game, int map_x, int map_y, int color);
-void    put_pixel_minimap(t_game *game, int x, int y, int color);
-void    draw_player_triangle(t_game *game, t_draw_player_data *data);
-void    draw_border(t_game *game);
-int     is_in_circle(int x, int y, int center_x, int center_y);
+void	init_minimap(t_game *game);
+void	update_minimap(t_game *game);
+void	clear_minimap(t_game *game);
+void	draw_player(t_game *game);
+void	draw_square(t_game *game, int map_x, int map_y, int color);
+void	put_pixel_minimap(t_game *game, int x, int y, int color);
+void	draw_player_triangle(t_game *game, t_draw_player_data *data);
+void	draw_border(t_game *game);
+int		is_in_circle(int x, int y, int center_x, int center_y);
 
 #endif

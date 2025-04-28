@@ -14,13 +14,13 @@
 
 void	darken_img_between_frame(t_game *game)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (i < game->renderer.win_width * game->renderer.win_height)
 	{
-		((unsigned int*)game->renderer.frame.addr)[i] = DARKEN_COLOR;
-		i++;		
+		((unsigned int *)game->renderer.frame.addr)[i] = DARKEN_COLOR;
+		i++;
 	}
 }
 

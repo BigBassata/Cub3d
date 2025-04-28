@@ -12,7 +12,6 @@
 
 #include "cub3d.h"
 
-
 void	clean_error_exit(t_game *game, char *error)
 {
 	cleanup_game(game);

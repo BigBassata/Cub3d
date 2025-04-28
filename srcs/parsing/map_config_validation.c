@@ -121,8 +121,5 @@ int	config_map_validation(t_map_config *map_config)
 		return (ERROR);
 	if (game_map_creation(map_config) == ERROR)
 		return (ERROR);
-	// ******
-	// debug_print_map(map_config);
-	// ******
 	return (TRUE);
 }

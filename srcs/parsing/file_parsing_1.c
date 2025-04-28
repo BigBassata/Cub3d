@@ -81,7 +81,8 @@ int	config_map(int fd, t_map_config *map_config)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if ((line[0] == '\r' && line[1] == '\n') || line[0] == '\n' || line[0] == '\0')
+		if ((line[0] == '\r' && line[1] == '\n') || line[0] == '\n'
+			|| line[0] == '\0')
 		{
 			free(line);
 			line = get_next_line(fd);
@@ -116,7 +117,5 @@ t_map_config	*file_parsing(char *file)
 		return (close(fd), delete_map_config(map_config), NULL);
 	if (config_map_validation(map_config) != TRUE)
 		return (close(fd), delete_map_config(map_config), NULL);
-	printf("color: %d %d %d\n", map_config->f_color[0],
-		map_config->f_color[1], map_config->f_color[2]);
 	return (close(fd), map_config);
 }

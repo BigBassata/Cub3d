@@ -44,17 +44,9 @@ SRC_FILES = main.c init.c \
 	render/raycasting_2.c render/raycasting_3.c minimap/minimap.c minimap/minimap_draw.c \
 	minimap/minimap_draw_utils.c minimap/minimap_init.c
 
-##### SOURCES DE TESTS #####
-TESTS_SRC_FILES = main_test.c \
-	parsing_test/parsing_test.c
-# wall_textures/wall_textures_test.c #
-# game_test/game_test.c #
-
 ##### CHEMINS COMPLETS #####
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJS = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
-TESTS_SRCS = $(addprefix $(TESTS_DIR), $(TESTS_SRC_FILES))
-TESTS_OBJS = $(patsubst $(TESTS_DIR)%.c, $(TESTS_OBJ_DIR)%.o, $(TESTS_SRCS))
 
 ##### INCLUDES #####
 INCLUDES = -I$(INCLUDES_DIR) -I$(LIBFT_DIR) -I$(MINI_LIBX_DIR)
@@ -96,25 +88,6 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-##### RÈGLES DE TEST #####
-test: test_dirs $(TESTS_NAME)
-	@echo "$(BLUE)Exécution des tests...$(WHITE)"
-	./$(TESTS_NAME)
-	@echo "$(GREEN)Tests terminés !$(WHITE)"
-
-test_dirs: $(TESTS_OBJ_DIR) $(TESTS_OBJ_SUBDIRS)
-
-$(TESTS_OBJ_DIR) $(TESTS_OBJ_SUBDIRS):
-	@mkdir -p $@
-$(TESTS_NAME): $(TESTS_OBJS) $(MINI_LIBX) $(filter-out $(OBJ_DIR)main.o, $(OBJS)) $(UNITY_SRC) $(LIBFT)
-	@echo "$(BLUE)Compilation des tests unitaires...$(WHITE)"
-	$(CC) $(CFLAGS) $(TESTS_INCLUDES) $(TESTS_OBJS) $(filter-out $(OBJ_DIR)main.o, $(OBJS)) $(UNITY_SRC) -o $(TESTS_NAME) -L$(LIBFT_DIR) -lft -L$(MINI_LIBX_DIR) -lmlx -lX11 -lXext -DTEST_MODE
-	@echo "$(GREEN)Tests compilés !$(WHITE)"
-	
-$(TESTS_OBJ_DIR)%.o: $(TESTS_DIR)%.c
-	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(TESTS_INCLUDES) -c $< -o $@
-
 ##### NETTOYAGE #####
 clean:
 	@echo "$(BLUE)Suppression des fichiers objets...$(WHITE)"
@@ -124,9 +97,8 @@ clean:
 	@echo "$(GREEN)Fichiers objets supprimés !$(WHITE)"
 
 fclean: clean
-	@echo "$(BLUE)Suppression de $(NAME) et $(TESTS_NAME)...$(WHITE)"
+	@echo "$(BLUE)Suppression de $(NAME)...$(WHITE)"
 	@rm -f $(NAME)
-	@rm -f $(TESTS_NAME)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	@echo "$(GREEN)Exécutables supprimés !$(WHITE)"
 

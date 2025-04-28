@@ -45,15 +45,6 @@ t_map_config	*init_map_config(void)
 
 void	free_map(char **map)
 {
-	// char	**tmp;
-
-	// if (map)
-	// {
-	// 	tmp = map;
-	// 	while (*tmp)
-	// 		free(*tmp++);
-	// 	free(map);
-	// }
 	free_2d_array(map, -1);
 }
 
@@ -83,30 +74,30 @@ void	delete_map_config(t_map_config *map_config)
 	}
 }
 
-void	display_map_config(t_map_config *map_config)
-{
-	ft_printf("================================\n");
-	ft_printf("no_path: %s\n", map_config->no_path);
-	ft_printf("so_path: %s\n", map_config->so_path);
-	ft_printf("ea_path: %s\n", map_config->ea_path);
-	ft_printf("we_path: %s\n", map_config->we_path);
-	ft_printf("f_color: %i,%i,%i\n", map_config->f_color[0],
-		map_config->f_color[1], map_config->f_color[2]);
-	ft_printf("c_color: %i,%i,%i\n", map_config->c_color[0],
-		map_config->c_color[1], map_config->c_color[2]);
-	ft_printf("map_height: %i\n", map_config->map_height);
-	ft_printf("map_width: %i\n", map_config->map_width);
-	ft_printf("start_dir: %i\n", map_config->start_dir);
-	ft_printf("start_y: %i\n", map_config->start_y);
-	ft_printf("start_x: %i\n", map_config->start_x);
-	ft_printf("================================\n");
-}
+// void	display_map_config(t_map_config *map_config)
+// {
+// 	ft_printf("================================\n");
+// 	ft_printf("no_path: %s\n", map_config->no_path);
+// 	ft_printf("so_path: %s\n", map_config->so_path);
+// 	ft_printf("ea_path: %s\n", map_config->ea_path);
+// 	ft_printf("we_path: %s\n", map_config->we_path);
+// 	ft_printf("f_color: %i,%i,%i\n", map_config->f_color[0],
+// 		map_config->f_color[1], map_config->f_color[2]);
+// 	ft_printf("c_color: %i,%i,%i\n", map_config->c_color[0],
+// 		map_config->c_color[1], map_config->c_color[2]);
+// 	ft_printf("map_height: %i\n", map_config->map_height);
+// 	ft_printf("map_width: %i\n", map_config->map_width);
+// 	ft_printf("start_dir: %i\n", map_config->start_dir);
+// 	ft_printf("start_y: %i\n", map_config->start_y);
+// 	ft_printf("start_x: %i\n", map_config->start_x);
+// 	ft_printf("================================\n");
+// }
 
 void	debug_print_map(t_map_config *map_config)
 {
 	int	y;
 	int	x;
-	
+
 	y = 0;
 	while (map_config->map[y])
 	{

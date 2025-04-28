@@ -12,49 +12,46 @@
 
 #include "cub3d.h"
 
-int handle_keypress(int keycode, t_game *game)
+int	handle_keypress(int keycode, t_game *game)
 {
-    if (keycode == ESCAPE)
-    {
-        cleanup_game(game);
-        exit(0);
-    }
-    else if (keycode == UP)
-        game->input.move_forward = 1;
-    else if (keycode == DOWN)
-        game->input.move_backward = 1;
-    else if (keycode == RIGHT)
-        game->input.move_left = 1;
-    else if (keycode == LEFT)
-        game->input.move_right = 1;
-    else if (keycode == ROTATION_LEFT)
-        game->input.rotate_left = 1;
-    else if (keycode == ROTATION_RIGHT)
-        game->input.rotate_right = 1;
-    
-    return (0);
+	if (keycode == ESCAPE)
+	{
+		cleanup_game(game);
+		exit(0);
+	}
+	else if (keycode == UP)
+		game->input.move_forward = 1;
+	else if (keycode == DOWN)
+		game->input.move_backward = 1;
+	else if (keycode == RIGHT)
+		game->input.move_left = 1;
+	else if (keycode == LEFT)
+		game->input.move_right = 1;
+	else if (keycode == ROTATION_LEFT)
+		game->input.rotate_left = 1;
+	else if (keycode == ROTATION_RIGHT)
+		game->input.rotate_right = 1;
+	return (0);
 }
 
-
-int handle_keyrelease(int keycode, t_game *game)
+int	handle_keyrelease(int keycode, t_game *game)
 {
-    if (keycode == UP)
-        game->input.move_forward = 0;
-    else if (keycode == DOWN)
-        game->input.move_backward = 0;
-    else if (keycode == RIGHT)
-        game->input.move_left = 0;
-    else if (keycode == LEFT)
-        game->input.move_right = 0;
-    else if (keycode == ROTATION_LEFT)
-        game->input.rotate_left = 0;
-    else if (keycode == ROTATION_RIGHT)
-        game->input.rotate_right = 0;
-    
-    return (0);
+	if (keycode == UP)
+		game->input.move_forward = 0;
+	else if (keycode == DOWN)
+		game->input.move_backward = 0;
+	else if (keycode == RIGHT)
+		game->input.move_left = 0;
+	else if (keycode == LEFT)
+		game->input.move_right = 0;
+	else if (keycode == ROTATION_LEFT)
+		game->input.rotate_left = 0;
+	else if (keycode == ROTATION_RIGHT)
+		game->input.rotate_right = 0;
+	return (0);
 }
 
-static void render_images_to_window(t_game *game)
+static void	render_images_to_window(t_game *game)
 {
 	mlx_put_image_to_window(game->renderer.mlx, game->renderer.win,
 		game->renderer.frame.img, 0, 0);
@@ -65,9 +62,9 @@ static void render_images_to_window(t_game *game)
 		game->renderer.minimap.pos_y);
 }
 
-int update_loop(t_game *game)
+int	update_loop(t_game *game)
 {
-	int x;
+	int	x;
 
 	update_player_position(game);
 	darken_img_between_frame(game);
