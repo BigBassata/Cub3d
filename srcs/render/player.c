@@ -38,14 +38,14 @@ void	config_starting_dir_2(t_game *game)
 		game->player.dir_x = 1.0;
 		game->player.dir_y = 0.0;
 		game->player.plane_x = 0.0;
-		game->player.plane_y = -0.66;
+		game->player.plane_y = 0.66;
 	}
 	else if (game->map_data->player_start_dir == 'W')
 	{
 		game->player.dir_x = -1.0;
 		game->player.dir_y = 0.0;
 		game->player.plane_x = 0.0;
-		game->player.plane_y = 0.66;
+		game->player.plane_y = -0.66;
 	}
 }
 

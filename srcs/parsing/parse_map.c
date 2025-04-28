@@ -83,7 +83,8 @@ int	parse_map(char *mapfile, t_map_data *map_data)
 
 	map_config = file_parsing(mapfile);
 	if (!map_config)
-		return (print_error("Failed to parse map file"), FALSE);
+		return (delete_map_config(map_config),
+			print_error("Failed to parse map file"), FALSE);
 	map_data->width = map_config->map_width;
 	map_data->height = map_config->map_height;
 	if (!copy_map_grid(map_data, map_config))

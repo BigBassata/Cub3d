@@ -23,10 +23,14 @@ int	handle_keypress(int keycode, t_game *game)
 		game->input.move_forward = 1;
 	else if (keycode == DOWN)
 		game->input.move_backward = 1;
+	// else if (keycode == RIGHT)
+		// game->input.move_left = 1;
 	else if (keycode == RIGHT)
-		game->input.move_left = 1;
-	else if (keycode == LEFT)
 		game->input.move_right = 1;
+	// else if (keycode == LEFT)
+		// game->input.move_right = 1;
+	else if (keycode == LEFT)
+		game->input.move_left = 1;
 	else if (keycode == ROTATION_LEFT)
 		game->input.rotate_left = 1;
 	else if (keycode == ROTATION_RIGHT)
@@ -40,10 +44,14 @@ int	handle_keyrelease(int keycode, t_game *game)
 		game->input.move_forward = 0;
 	else if (keycode == DOWN)
 		game->input.move_backward = 0;
+	// else if (keycode == RIGHT)
+		// game->input.move_left = 0;
 	else if (keycode == RIGHT)
-		game->input.move_left = 0;
-	else if (keycode == LEFT)
 		game->input.move_right = 0;
+	// else if (keycode == LEFT)
+		// game->input.move_right = 0;
+	else if (keycode == LEFT)
+		game->input.move_left = 0;
 	else if (keycode == ROTATION_LEFT)
 		game->input.rotate_left = 0;
 	else if (keycode == ROTATION_RIGHT)
@@ -90,9 +98,9 @@ int	update_loop(t_game *game)
 
 // int	handle_resize(int new_w, int new_h, t_game *game)
 // {
-// 	if (new_w < WIN_MIN_WIDTH)  
+// 	if (new_w < WIN_MIN_WIDTH)
 // 		new_w = WIN_MIN_WIDTH;
-// 	if (new_h < WIN_MIN_HEIGHT) 
+// 	if (new_h < WIN_MIN_HEIGHT)
 // 		new_h = WIN_MIN_HEIGHT;
 // 	if (new_w > WIN_MAX_WIDTH)
 // 		new_w = WIN_MAX_WIDTH;
