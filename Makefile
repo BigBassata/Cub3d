@@ -10,7 +10,7 @@
 #                                                                            #
 # ************************************************************************** #
 
-NAME = cub3D
+NAME = cub3d
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 MINI_LIBX_DIR = ./minilibx-linux

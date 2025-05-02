@@ -23,14 +23,10 @@ int	handle_keypress(int keycode, t_game *game)
 		game->input.move_forward = 1;
 	else if (keycode == DOWN)
 		game->input.move_backward = 1;
-	// else if (keycode == RIGHT)
-		// game->input.move_left = 1;
 	else if (keycode == RIGHT)
-		game->input.move_right = 1;
-	// else if (keycode == LEFT)
-		// game->input.move_right = 1;
-	else if (keycode == LEFT)
 		game->input.move_left = 1;
+	else if (keycode == LEFT)
+		game->input.move_right = 1;
 	else if (keycode == ROTATION_LEFT)
 		game->input.rotate_left = 1;
 	else if (keycode == ROTATION_RIGHT)
@@ -44,14 +40,10 @@ int	handle_keyrelease(int keycode, t_game *game)
 		game->input.move_forward = 0;
 	else if (keycode == DOWN)
 		game->input.move_backward = 0;
-	// else if (keycode == RIGHT)
-		// game->input.move_left = 0;
 	else if (keycode == RIGHT)
-		game->input.move_right = 0;
-	// else if (keycode == LEFT)
-		// game->input.move_right = 0;
-	else if (keycode == LEFT)
 		game->input.move_left = 0;
+	else if (keycode == LEFT)
+		game->input.move_right = 0;
 	else if (keycode == ROTATION_LEFT)
 		game->input.rotate_left = 0;
 	else if (keycode == ROTATION_RIGHT)
@@ -68,6 +60,30 @@ static void	render_images_to_window(t_game *game)
 	mlx_put_image_to_window(game->renderer.mlx, game->renderer.win,
 		game->renderer.minimap.img, game->renderer.minimap.pos_x,
 		game->renderer.minimap.pos_y);
+}
+
+int	handle_mouse_move(int x, t_game *game)
+{
+	int		delta_x;
+	double	rot_angle;
+
+	if (game->input.last_mouse_x == -1)
+	{
+		game->input.last_mouse_x = x;
+		return (0);
+	}
+	delta_x = x - game->input.last_mouse_x;
+	if (abs(delta_x) > MOUSE_DEADZONE)
+	{
+		rot_angle = delta_x * game->input.mouse_sensitivity;
+		rotate_player(game, rot_angle);
+	}
+	game->input.last_mouse_x = x;
+	mlx_mouse_move(game->renderer.mlx, game->renderer.win,
+		game->renderer.win_width / 2,
+		game->renderer.win_height / 2);
+	game->input.last_mouse_x = game->renderer.win_width / 2;
+	return (0);
 }
 
 int	update_loop(t_game *game)

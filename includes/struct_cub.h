@@ -6,7 +6,7 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:57:47 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/28 15:17:09 by licohen          ###   ########.fr       */
+/*   Updated: 2025/05/02 18:18:28 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ typedef struct s_input
 	int		last_mouse_x;
 	int		last_mouse_y;
 	double	mouse_sensitivity;
+	int 	mouse_capture;
 }	t_input;
 
 /* Structure de configuration de la carte (existante) */

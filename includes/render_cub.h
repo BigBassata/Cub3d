@@ -6,7 +6,7 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:54:14 by licohen           #+#    #+#             */
-/*   Updated: 2025/04/28 14:57:52 by licohen          ###   ########.fr       */
+/*   Updated: 2025/05/02 18:18:39 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		handle_keyrelease(int keycode, t_game *game);
 int		close_window(t_game *game);
 int		update_loop(t_game *game);
 int		handle_resize(int new_w, int new_h, t_game *game);
+int		handle_mouse_move(int x, t_game *game);
 
 // player
 void	config_player(t_game *game);
@@ -47,6 +48,7 @@ void	left_lateral_movement(t_game *game);
 void	right_lateral_movement(t_game *game);
 void	left_rotational_movement(t_game *game);
 void	right_rotational_movement(t_game *game);
+void	rotate_player(t_game *game, double rot_angle);
 
 // raycasting
 void	darken_img_between_frame(t_game *game);
