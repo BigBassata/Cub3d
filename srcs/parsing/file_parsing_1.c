@@ -112,7 +112,10 @@ t_map_config	*file_parsing(char *file)
 		return (NULL);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
+	{
+		delete_map_config(map_config);
 		return (print_error("fd opening failed"), NULL);
+	}
 	if (config_map(fd, map_config) != TRUE)
 		return (close(fd), delete_map_config(map_config), NULL);
 	if (config_map_validation(map_config) != TRUE)

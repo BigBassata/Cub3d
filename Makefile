@@ -19,7 +19,7 @@ MINI_LIBX = $(MINI_LIBX_DIR)/libmlx.a
 ##### COMPILATEUR ET FLAGS #####
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
-
+#-fsanitize=address,undefined
 ##### RÉPERTOIRES #####
 SRC_DIR = srcs/
 OBJ_DIR = obj/
