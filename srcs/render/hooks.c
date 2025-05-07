@@ -62,34 +62,6 @@ static void	render_images_to_window(t_game *game)
 		game->renderer.minimap.pos_y);
 }
 
-int	handle_mouse_move(int x, void *param)
-{
-	int		delta_x;
-	double	rot_angle;
-
-	t_game	*game;
-	game = (t_game *)param;
-	printf("Input :%d\n", game->input.last_mouse_x);
-	if (game->input.last_mouse_x == -1)
-	{
-		game->input.last_mouse_x = x;
-		return (0);
-	}
-	
-	delta_x = x - game->input.last_mouse_x;
-	if (abs(delta_x) > MOUSE_DEADZONE)
-	{
-		rot_angle = delta_x * game->input.mouse_sensitivity;
-		rotate_player(game, rot_angle);
-	}
-	game->input.last_mouse_x = x;
-	mlx_mouse_move(game->renderer.mlx, game->renderer.win,
-		game->renderer.win_width / 2,
-		game->renderer.win_height / 2);
-	game->input.last_mouse_x = game->renderer.win_width / 2;
-	return (0);
-}
-
 int	update_loop(t_game *game)
 {
 	int	x;

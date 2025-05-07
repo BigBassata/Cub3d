@@ -6,16 +6,11 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:32:10 by licohen           #+#    #+#             */
-/*   Updated: 2025/05/05 20:20:40 by licohen          ###   ########.fr       */
+/*   Updated: 2025/05/05 20:30:20 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	hide_cursor(t_game *game)
-{
-	mlx_mouse_hide(game->renderer.mlx, game->renderer.win);
-}
 
 void	cleanup_graphics(t_game *game)
 {
@@ -49,7 +44,6 @@ int	init_window(t_game *game)
 		return (print_error("Failed to create data addr"), ERROR);
 	game->renderer.win_width = (double)WINDOW_WIDTH;
 	game->renderer.win_height = (double)WINDOW_HEIGHT;
-	mlx_mouse_hide(game->renderer.mlx, game->renderer.win);
 	init_minimap(game);
 	return (TRUE);
 }
