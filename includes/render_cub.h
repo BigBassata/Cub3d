@@ -6,7 +6,7 @@
 /*   By: licohen <licohen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:54:14 by licohen           #+#    #+#             */
-/*   Updated: 2025/05/05 20:30:38 by licohen          ###   ########.fr       */
+/*   Updated: 2025/05/27 15:51:49 by licohen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ void	right_lateral_movement(t_game *game);
 void	left_rotational_movement(t_game *game);
 void	right_rotational_movement(t_game *game);
 void	rotate_player(t_game *game, double rot_angle);
+double	get_x_offset(double dir_x);
+double	get_y_offset(double dir_y);
+int		is_position_valid(t_game *game, int x, int y);
 
 // raycasting
 void	darken_img_between_frame(t_game *game);

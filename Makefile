@@ -40,9 +40,9 @@ SRC_FILES = main.c init.c \
 	parsing/game_map_utils_3.c parsing/map_config_colors_1.c parsing/map_config_colors_2.c \
 	parsing/parse_map.c utils/utils.c utils/utils_2.c utils/colors_utils.c cleanup/ft_cleanup.c \
 	window/window_init.c render/hooks.c render/player.c render/player_position.c \
-	render/render_utils.c render/movements_1.c render/movements_2.c render/raycasting_1.c \
-	render/raycasting_2.c render/raycasting_3.c minimap/minimap.c minimap/minimap_draw.c \
-	minimap/minimap_draw_utils.c minimap/minimap_init.c
+	render/render_utils.c render/render_utils2.c render/movements_1.c render/movements_2.c \
+	render/raycasting_1.c render/raycasting_2.c render/raycasting_3.c minimap/minimap.c \
+	minimap/minimap_draw.c minimap/minimap_draw_utils.c minimap/minimap_init.c
 
 ##### CHEMINS COMPLETS #####
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
